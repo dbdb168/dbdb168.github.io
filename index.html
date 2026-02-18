@@ -1,0 +1,822 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>David Beath — AI Practitioner. Builder.</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=DM+Mono:wght@300;400;500&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --ink: #0f0e0c;
+    --paper: #f5f0e8;
+    --amber: #c8771a;
+    --amber-light: #e8a84a;
+    --warm-mid: #8a7968;
+    --rule: #d4c9b4;
+    --code-bg: #1a1814;
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--paper);
+    color: var(--ink);
+    font-family: 'Libre Baskerville', Georgia, serif;
+    font-size: 17px;
+    line-height: 1.7;
+    overflow-x: hidden;
+  }
+
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 512 512' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
+    pointer-events: none;
+    z-index: 1000;
+    opacity: 0.5;
+  }
+
+  /* ─── NAV ─── */
+  nav {
+    position: fixed; top: 0; width: 100%;
+    padding: 1.2rem 4rem;
+    display: flex; justify-content: space-between; align-items: center;
+    z-index: 100;
+    background: rgba(245, 240, 232, 0.92);
+    backdrop-filter: blur(8px);
+    border-bottom: 1px solid var(--rule);
+  }
+  .nav-brand {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.8rem; font-weight: 500;
+    letter-spacing: 0.12em; text-transform: uppercase;
+    color: var(--amber); text-decoration: none;
+  }
+  .nav-links { display: flex; gap: 2.5rem; list-style: none; }
+  .nav-links a {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.75rem; letter-spacing: 0.08em;
+    text-transform: uppercase; color: var(--warm-mid);
+    text-decoration: none; transition: color 0.2s;
+  }
+  .nav-links a:hover { color: var(--ink); }
+
+  /* ─── HERO ─── */
+  .hero {
+    min-height: 100vh; padding: 0 4rem;
+    display: grid; grid-template-columns: 1.2fr 1fr;
+    align-items: center; gap: 4rem; padding-top: 6rem;
+  }
+  .hero-left { max-width: 580px; }
+  .hero-eyebrow {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.75rem; letter-spacing: 0.15em;
+    text-transform: uppercase; color: var(--amber);
+    margin-bottom: 1.5rem;
+    display: flex; align-items: center; gap: 0.75rem;
+  }
+  .hero-eyebrow::before {
+    content: ''; display: block; width: 2rem; height: 1px; background: var(--amber);
+  }
+  h1 {
+    font-family: 'Instrument Serif', Georgia, serif;
+    font-size: clamp(2.6rem, 4.2vw, 4.5rem);
+    line-height: 1.1; font-weight: 400;
+    margin-bottom: 2rem; letter-spacing: -0.02em;
+  }
+  h1 em { font-style: italic; color: var(--amber); }
+  .hero-description {
+    font-size: 1.05rem; line-height: 1.8;
+    color: #3a3530; margin-bottom: 1.5rem; max-width: 500px;
+  }
+  .hero-article-link {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.78rem; color: var(--amber);
+    text-decoration: none; display: inline-flex;
+    align-items: center; gap: 0.4rem;
+    margin-bottom: 2.5rem; transition: color 0.2s; line-height: 1.5;
+  }
+  .hero-article-link:hover { text-decoration: underline; }
+  .hero-cta { display: flex; gap: 1.25rem; flex-wrap: wrap; }
+
+  .btn-primary {
+    background: var(--ink); color: var(--paper);
+    padding: 0.9rem 2rem;
+    font-family: 'DM Mono', monospace;
+    font-size: 0.8rem; letter-spacing: 0.08em;
+    text-transform: uppercase; text-decoration: none;
+    display: inline-block;
+    transition: background 0.2s, transform 0.15s;
+  }
+  .btn-primary:hover { background: var(--amber); transform: translateY(-1px); }
+  .btn-secondary {
+    color: var(--ink); padding: 0.9rem 2rem;
+    font-family: 'DM Mono', monospace;
+    font-size: 0.8rem; letter-spacing: 0.08em;
+    text-transform: uppercase; text-decoration: none;
+    display: inline-block; border: 1px solid var(--rule);
+    transition: border-color 0.2s, transform 0.15s;
+  }
+  .btn-secondary:hover { border-color: var(--ink); transform: translateY(-1px); }
+
+  /* Hero right — The Approach */
+  .hero-right { border-left: 1px solid var(--rule); padding-left: 3.5rem; }
+  .approach-label {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.7rem; letter-spacing: 0.15em;
+    text-transform: uppercase; color: var(--amber); margin-bottom: 2rem;
+  }
+  .approach-step { margin-bottom: 2rem; padding-bottom: 2rem; border-bottom: 1px solid var(--rule); }
+  .approach-step:last-child { border-bottom: none; margin-bottom: 0; padding-bottom: 0; }
+  .approach-step-num {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.65rem; letter-spacing: 0.1em; color: var(--amber); margin-bottom: 0.4rem;
+  }
+  .approach-step-title {
+    font-family: 'Instrument Serif', serif;
+    font-size: 1.15rem; font-weight: 400; margin-bottom: 0.4rem; line-height: 1.25;
+  }
+  .approach-step-desc { font-size: 0.85rem; line-height: 1.65; color: #5a5048; }
+
+  /* ─── SECTIONS ─── */
+  section { padding: 7rem 4rem; }
+  .section-header {
+    display: flex; align-items: baseline; gap: 1.5rem; margin-bottom: 4rem;
+  }
+  .section-label {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.7rem; letter-spacing: 0.15em;
+    text-transform: uppercase; color: var(--amber); white-space: nowrap;
+  }
+  .section-rule { flex: 1; height: 1px; background: var(--rule); }
+  h2 {
+    font-family: 'Instrument Serif', serif;
+    font-size: clamp(2rem, 3.5vw, 3.2rem);
+    font-weight: 400; line-height: 1.15;
+    letter-spacing: -0.01em; margin-bottom: 1.5rem;
+  }
+
+  /* ─── BUILT ─── */
+  .built-intro {
+    max-width: 640px; font-size: 1.05rem; line-height: 1.8;
+    color: #3a3530; margin-bottom: 4rem;
+  }
+  .projects-grid {
+    display: grid; grid-template-columns: repeat(3, 1fr); gap: 2px;
+  }
+  .project-card {
+    background: white; padding: 2.5rem;
+    position: relative; overflow: hidden;
+    transition: transform 0.2s;
+    display: flex; flex-direction: column;
+  }
+  .project-card::before {
+    content: ''; position: absolute; bottom: 0; left: 0;
+    width: 100%; height: 3px; background: var(--amber);
+    transform: scaleX(0); transform-origin: left;
+    transition: transform 0.3s ease;
+  }
+  .project-card:hover { transform: translateY(-3px); }
+  .project-card:hover::before { transform: scaleX(1); }
+
+  .project-tag {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.65rem; letter-spacing: 0.12em;
+    text-transform: uppercase; color: var(--amber);
+    margin-bottom: 1.25rem;
+    display: flex; align-items: center; gap: 0.5rem;
+  }
+  .project-tag::before { content: '\25B8'; font-size: 0.5rem; }
+  .project-card h3 {
+    font-family: 'Instrument Serif', serif;
+    font-size: 1.4rem; font-weight: 400;
+    margin-bottom: 0.75rem; line-height: 1.25;
+  }
+  .project-problem {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.75rem; color: var(--warm-mid);
+    line-height: 1.6; margin-bottom: 1rem; padding: 0.75rem;
+    background: var(--paper); border-left: 2px solid var(--amber);
+  }
+  .project-problem::before {
+    content: 'THE PROBLEM: '; font-size: 0.6rem;
+    letter-spacing: 0.1em; color: var(--amber);
+  }
+  .project-backstory {
+    font-size: 0.82rem; line-height: 1.65; color: #6a6058;
+    margin-bottom: 1rem; padding: 0.75rem 0;
+    border-top: 1px dashed var(--rule);
+    font-style: italic;
+  }
+  .project-backstory strong {
+    font-style: normal; font-size: 0.65rem;
+    font-family: 'DM Mono', monospace;
+    letter-spacing: 0.08em; text-transform: uppercase;
+    color: var(--warm-mid); display: block; margin-bottom: 0.3rem;
+  }
+  .project-desc {
+    font-size: 0.9rem; line-height: 1.7;
+    color: #4a4540; margin-bottom: 1.5rem; flex: 1;
+  }
+  .project-footer {
+    display: flex; justify-content: space-between;
+    align-items: flex-end; gap: 1rem; margin-top: auto;
+  }
+  .project-tech { display: flex; gap: 0.4rem; flex-wrap: wrap; }
+  .tech-badge {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.6rem; letter-spacing: 0.08em;
+    text-transform: uppercase; padding: 0.2rem 0.5rem;
+    background: var(--paper); color: var(--warm-mid);
+    border: 1px solid var(--rule);
+  }
+  .project-link {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.7rem; color: var(--amber);
+    text-decoration: none; letter-spacing: 0.05em; white-space: nowrap;
+  }
+  .project-link:hover { text-decoration: underline; }
+  .project-links { display: flex; gap: 1rem; align-items: center; }
+  .project-status {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.6rem; letter-spacing: 0.08em;
+    text-transform: uppercase; color: var(--warm-mid);
+    white-space: nowrap;
+  }
+
+  /* Featured card */
+  .project-card.featured {
+    background: var(--ink); color: var(--paper); grid-column: span 2;
+  }
+  .project-card.featured h3 { color: var(--paper); }
+  .project-card.featured .project-desc { color: #c8bfb0; }
+  .project-card.featured .project-problem { background: rgba(255,255,255,0.06); color: #a09888; }
+  .project-card.featured .tech-badge { background: transparent; color: var(--amber-light); border-color: rgba(255,255,255,0.15); }
+  .project-card.featured .project-backstory { color: #9a9080; border-top-color: rgba(255,255,255,0.1); }
+
+  /* Wide card */
+  .project-card.wide { grid-column: span 2; }
+
+  /* Conversation card */
+  .project-card.conversation {
+    background: var(--amber); color: var(--ink); grid-column: 1 / -1;
+  }
+  .project-card.conversation .project-tag { color: rgba(15,14,12,0.6); }
+  .project-card.conversation .project-tag::before { color: rgba(15,14,12,0.4); }
+  .project-card.conversation .project-problem {
+    background: rgba(255,255,255,0.2); border-left-color: var(--ink); color: rgba(15,14,12,0.7);
+  }
+  .project-card.conversation .project-problem::before { color: var(--ink); }
+  .project-card.conversation .project-desc { color: rgba(15,14,12,0.8); }
+  .project-card.conversation .project-link { color: var(--ink); font-size: 0.8rem; font-weight: 500; }
+  .project-card.conversation::before { background: var(--ink); }
+
+  /* ─── WRITING ─── */
+  .deepdives { background: #1a1814; color: var(--paper); }
+  .deepdives .section-label { color: var(--amber-light); }
+  .deepdives .section-rule { background: rgba(255,255,255,0.1); }
+  .deepdives h2 { color: var(--paper); }
+  .articles-list {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; margin-top: 1rem;
+  }
+  .article-item {
+    padding: 2.5rem; border: 1px solid rgba(255,255,255,0.08);
+    transition: border-color 0.2s, transform 0.2s;
+    text-decoration: none; display: block;
+  }
+  .article-item:hover { border-color: var(--amber); transform: translateY(-2px); }
+  .article-venue {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.65rem; letter-spacing: 0.12em;
+    text-transform: uppercase; color: var(--amber-light); margin-bottom: 1rem;
+  }
+  .article-item h3 {
+    font-family: 'Instrument Serif', serif;
+    font-size: 1.35rem; font-weight: 400;
+    color: var(--paper); margin-bottom: 0.75rem; line-height: 1.3;
+  }
+  .article-desc {
+    font-size: 0.9rem; line-height: 1.7; color: #a09888; margin-bottom: 1.5rem;
+  }
+  .article-link {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.7rem; color: var(--amber-light);
+    text-decoration: none; letter-spacing: 0.05em;
+    display: flex; align-items: center; gap: 0.5rem;
+  }
+  .article-link::after { content: '\2192'; }
+  .article-link:hover { text-decoration: underline; }
+
+  /* ─── BUILDFIRST BAND ─── */
+  .buildfirst-section { background: var(--amber); color: var(--ink); }
+  .buildfirst-section .section-label { color: rgba(15,14,12,0.5); }
+  .buildfirst-section .section-rule { background: rgba(15,14,12,0.2); }
+  .buildfirst-grid {
+    display: grid; grid-template-columns: 1.4fr 1fr;
+    gap: 6rem; align-items: center;
+  }
+  .buildfirst-section h2 { font-size: clamp(2.5rem, 4vw, 4rem); margin-bottom: 1.5rem; }
+  .buildfirst-desc {
+    font-size: 1.05rem; line-height: 1.8;
+    color: rgba(15,14,12,0.8); margin-bottom: 1.5rem;
+  }
+  .buildfirst-quote {
+    font-family: 'Instrument Serif', serif;
+    font-size: 1.5rem; font-style: italic; line-height: 1.5;
+    color: var(--ink); padding: 2.5rem;
+    background: rgba(255,255,255,0.25); border-left: 4px solid var(--ink);
+  }
+
+  /* ─── BACKGROUND ─── */
+  .arc-intro {
+    max-width: 640px; font-size: 1.05rem; line-height: 1.8;
+    color: #3a3530; margin-bottom: 4rem;
+  }
+  .timeline { position: relative; padding-left: 2rem; }
+  .timeline::before {
+    content: ''; position: absolute; left: 0; top: 0.5rem; bottom: 0;
+    width: 1px; background: var(--rule);
+  }
+  .timeline-item { position: relative; margin-bottom: 2rem; padding-left: 2.5rem; }
+  .timeline-item::before {
+    content: ''; position: absolute; left: -2rem; top: 0.55rem;
+    width: 7px; height: 7px; background: var(--amber);
+    border-radius: 50%; transform: translateX(-3px);
+  }
+  .timeline-meta {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.7rem; letter-spacing: 0.08em;
+    color: var(--amber); margin-bottom: 0.15rem;
+  }
+  .timeline-title {
+    font-family: 'Instrument Serif', serif;
+    font-size: 1.1rem; font-weight: 400; margin-bottom: 0.25rem;
+  }
+  .timeline-desc {
+    font-size: 0.85rem; line-height: 1.6; color: #5a5048; max-width: 520px;
+  }
+  .timeline-early {
+    font-size: 0.85rem; line-height: 1.6; color: #5a5048;
+    padding-left: 4.5rem; margin-top: 1rem;
+    border-top: 1px solid var(--rule); padding-top: 1.5rem;
+  }
+  .timeline-early strong {
+    font-family: 'DM Mono', monospace; font-size: 0.7rem;
+    letter-spacing: 0.08em; color: var(--warm-mid);
+  }
+
+  /* ─── CONTACT ─── */
+  .contact {
+    background: var(--ink); color: var(--paper);
+    text-align: center; padding: 8rem 4rem;
+  }
+  .contact h2 {
+    font-size: clamp(2.5rem, 5vw, 5rem);
+    color: var(--paper); margin-bottom: 1.25rem;
+  }
+  .contact h2 em { color: var(--amber-light); }
+  .contact-sub {
+    font-size: 1.05rem; color: #a09888;
+    margin-bottom: 3rem; max-width: 520px;
+    margin-left: auto; margin-right: auto; line-height: 1.7;
+  }
+  .contact-links {
+    display: flex; justify-content: center; gap: 1.5rem; flex-wrap: wrap;
+  }
+  .contact-link {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.8rem; letter-spacing: 0.08em;
+    text-transform: uppercase; color: var(--amber-light);
+    text-decoration: none; padding: 1rem 2rem;
+    border: 1px solid rgba(255,255,255,0.15);
+    transition: border-color 0.2s, background 0.2s;
+  }
+  .contact-link:hover { border-color: var(--amber-light); background: rgba(232,168,74,0.08); }
+
+  /* ─── FOOTER ─── */
+  footer {
+    background: var(--ink); border-top: 1px solid rgba(255,255,255,0.06);
+    padding: 1.5rem 4rem;
+    display: flex; justify-content: space-between; align-items: center;
+  }
+  .footer-brand {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.7rem; letter-spacing: 0.1em; color: #5a5048;
+  }
+  .footer-note {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.65rem; color: #4a4038;
+  }
+
+  /* ─── ANIMATIONS ─── */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(24px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  .hero-eyebrow { animation: fadeUp 0.6s ease both; }
+  h1 { animation: fadeUp 0.7s 0.1s ease both; }
+  .hero-description { animation: fadeUp 0.7s 0.2s ease both; }
+  .hero-article-link { animation: fadeUp 0.7s 0.25s ease both; }
+  .hero-cta { animation: fadeUp 0.7s 0.3s ease both; }
+  .hero-right { animation: fadeUp 0.8s 0.35s ease both; }
+
+  /* ─── RESPONSIVE ─── */
+  @media (max-width: 1024px) {
+    nav { padding: 1rem 2rem; }
+    .nav-links { gap: 1.5rem; }
+    section { padding: 5rem 2rem; }
+    .hero { grid-template-columns: 1fr; padding: 8rem 2rem 4rem; gap: 3rem; min-height: auto; }
+    .hero-right { border-left: none; border-top: 1px solid var(--rule); padding-left: 0; padding-top: 2rem; }
+    .projects-grid { grid-template-columns: 1fr; }
+    .project-card.featured, .project-card.wide, .project-card.conversation { grid-column: span 1; }
+    .articles-list { grid-template-columns: 1fr; }
+    .buildfirst-grid { grid-template-columns: 1fr; gap: 3rem; }
+    footer { flex-direction: column; gap: 0.5rem; text-align: center; }
+  }
+  @media (max-width: 640px) {
+    nav { padding: 1rem 1.25rem; }
+    .nav-links { gap: 1rem; }
+    .nav-links a { font-size: 0.65rem; }
+    section { padding: 4rem 1.25rem; }
+    .hero { padding: 7rem 1.25rem 3rem; }
+    .contact { padding: 5rem 1.25rem; }
+    footer { padding: 1.5rem 1.25rem; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="#" class="nav-brand">David Beath</a>
+  <ul class="nav-links">
+    <li><a href="#built">Built</a></li>
+    <li><a href="#writing">Writing</a></li>
+    <li><a href="#buildfirst">BuildFirst</a></li>
+    <li><a href="#arc">Background</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-left">
+    <p class="hero-eyebrow">AI Practitioner &middot; Builder</p>
+    <h1>Slow down to understand it. Speed is in the <em>build.</em></h1>
+    <p class="hero-description">
+      I've spent 20 years embedded inside complex organizations learning to understand what's actually broken&nbsp;&mdash; then building the smallest thing that fixes it. Now I help mid-market businesses develop what I call their Quiet Advantage: the ability to out-learn and out-experiment the bigger players while they're stuck in committee.
+    </p>
+    <a href="quiet-advantage.html" class="hero-article-link">Read: The Quiet Advantage &mdash; why smaller businesses are winning the AI race &rarr;</a>
+    <div class="hero-cta">
+      <a href="#built" class="btn-primary">See what I've built</a>
+      <a href="#contact" class="btn-secondary">Get in touch</a>
+    </div>
+  </div>
+
+  <div class="hero-right">
+    <p class="approach-label">The Approach</p>
+    <div class="approach-step">
+      <div class="approach-step-num">01</div>
+      <div class="approach-step-title">Understand before building</div>
+      <p class="approach-step-desc">Ask why until you understand what's actually broken. The problem is 80% of the work. Rushing this is where most projects die.</p>
+    </div>
+    <div class="approach-step">
+      <div class="approach-step-num">02</div>
+      <div class="approach-step-title">PRD before a single line of code</div>
+      <p class="approach-step-desc">Prototype your way to clarity. A clear understanding of the solution is the brief. Speed comes next.</p>
+    </div>
+    <div class="approach-step">
+      <div class="approach-step-num">03</div>
+      <div class="approach-step-title">Iterate fast, measure everything</div>
+      <p class="approach-step-desc">Ship the smallest working thing. The ability to iterate is the real advantage&nbsp;&mdash; not the first build.</p>
+    </div>
+    <div class="approach-step">
+      <div class="approach-step-num">04</div>
+      <div class="approach-step-title">Minimum effective dose</div>
+      <p class="approach-step-desc">Most organizations don't need more AI tools. They need fewer, aimed more precisely at the right problem.</p>
+    </div>
+  </div>
+</section>
+
+<!-- SECTION 01: WHAT I'VE BUILT -->
+<section id="built">
+  <div class="section-header">
+    <span class="section-label">01 / What I've Built</span>
+    <div class="section-rule"></div>
+  </div>
+  <p class="built-intro">Everything here started with a real problem. Some are deployed and in use. Some are tools I built for myself. Some taught me what not to build next time. The links go to live tools, GitHub repos, or an honest description of where things stand.</p>
+
+  <div class="projects-grid">
+
+    <!-- 1. MIXTAPE — Featured -->
+    <div class="project-card featured">
+      <div class="project-tag">Full-Stack Application &middot; Luminary</div>
+      <h3>Mixtape &mdash; Digital Mixtapes for the Streaming Era</h3>
+      <div class="project-problem">The art of making a mixtape&nbsp;&mdash; the curation, the message, the feeling of it&nbsp;&mdash; had no home in the streaming era. Spotify playlists are functional. They're not personal.</div>
+      <p class="project-desc">A fully deployed Next.js application. Search the Apple Music catalog, add liner notes, send via email or link&nbsp;&mdash; no account needed. Supabase database, SendGrid email integration, analytics dashboard, dynamic OG images for link previews. 50 commits. Production security. MIT licensed. This is what it looks like to go from problem to shipped product.</p>
+      <div class="project-footer">
+        <div class="project-tech">
+          <span class="tech-badge">Next.js 14</span>
+          <span class="tech-badge">TypeScript</span>
+          <span class="tech-badge">Supabase</span>
+          <span class="tech-badge">Apple Music API</span>
+          <span class="tech-badge">SendGrid</span>
+          <span class="tech-badge">Claude Code</span>
+        </div>
+        <div class="project-links">
+          <a href="https://mixtape.thisisluminary.co" class="project-link" target="_blank">Live app &#8599;</a>
+          <a href="https://github.com/dbdb168/mixtape" class="project-link" target="_blank">GitHub &#8599;</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- 2. AI ADOPTION DIAGNOSTIC -->
+    <div class="project-card">
+      <div class="project-tag">Diagnostic Tool &middot; Strange Circles</div>
+      <h3>AI Adoption Diagnostic</h3>
+      <div class="project-problem">AI readiness assessments are usually vendor scorecards. They measure budget and tools, not whether an organization can actually adopt and sustain AI.</div>
+      <p class="project-desc">A 10-minute diagnostic that maps leaders to one of four archetypes&nbsp;&mdash; Optimizer, Transformer, Tinkerer, Dreamer&nbsp;&mdash; across motivation and execution axes. Outputs a personalized prescription and invitation to the right peer cohort. 40+ iterations to get the question design right.</p>
+      <div class="project-footer">
+        <div class="project-tech">
+          <span class="tech-badge">Claude API</span>
+          <span class="tech-badge">Vercel</span>
+        </div>
+        <a href="https://ai-diagnostic-amber.vercel.app/" class="project-link" target="_blank">Try it &#8599;</a>
+      </div>
+    </div>
+
+    <!-- 3. CGO — with evolution backstory -->
+    <div class="project-card">
+      <div class="project-tag">AI Agent &middot; Business Development</div>
+      <h3>Conversational Growth Partner (CGO)</h3>
+      <div class="project-problem">CRMs capture what happened. They don't help you think about what to do next or catch the relationship going cold.</div>
+      <p class="project-desc">A Claude-powered chief growth officer sitting across Gmail, calendar, and pipeline data. Surfaces who to contact, drafts outreach in my voice, tracks commitments, flags quiet deals. Built on a skills architecture that understands specific business context. In active daily use.</p>
+      <div class="project-backstory">
+        <strong>The backstory</strong>
+        Started as a 650-line PRD and HTML prototype. Rebuilt as Nebula&nbsp;&mdash; a four-plugin operating system that tried to do everything. Over-engineered. Killed it, stripped it back to a conversational skills architecture. The lesson every builder learns: the first build teaches you what you actually need.
+      </div>
+      <div class="project-footer">
+        <div class="project-tech">
+          <span class="tech-badge">Claude Code</span>
+          <span class="tech-badge">MCP</span>
+          <span class="tech-badge">Gmail API</span>
+        </div>
+        <a href="https://github.com/dbdb168" class="project-link" target="_blank">GitHub &#8599;</a>
+      </div>
+    </div>
+
+    <!-- 4. FAMILYOPS -->
+    <div class="project-card">
+      <div class="project-tag">Personal Automation &middot; Family</div>
+      <h3>FamilyOps &mdash; Always-On Family Chief of Staff</h3>
+      <div class="project-problem">Single dad, two boys, co-parenting logistics. School emails, calendar conflicts, weekly family plans&nbsp;&mdash; it all needs coordinating and nobody's doing it.</div>
+      <p class="project-desc">Processes school emails, updates Google Calendar automatically, generates printable weekly family plans for the fridge. Runs autonomously with duplicate protection and two-input handling for simple vs. complex schedules.</p>
+      <div class="project-backstory">
+        <strong>The backstory</strong>
+        Version 1 was a Python script run from the terminal. Worked well for months. Then I moved it to OpenClaw to make it always-on&nbsp;&mdash; no terminal, no manual trigger. Now it's a family chief of staff that runs in the background. The problem was personal. The solution taught me about building autonomous agents.
+      </div>
+      <div class="project-footer">
+        <div class="project-tech">
+          <span class="tech-badge">Python</span>
+          <span class="tech-badge">Google Calendar API</span>
+          <span class="tech-badge">Gemini</span>
+          <span class="tech-badge">OpenClaw</span>
+        </div>
+        <span class="project-status">Local tool &middot; v7.4</span>
+      </div>
+    </div>
+
+    <!-- 5. BUILDFIRST.IO -->
+    <div class="project-card">
+      <div class="project-tag">Workshop Platform &middot; BuildFirst</div>
+      <h3>BuildFirst.io</h3>
+      <div class="project-problem">Executive AI training doesn't change behavior because it stays abstract. Leaders leave with enthusiasm and no momentum. Nothing ships.</div>
+      <p class="project-desc">A deployed workshop platform for leaders who want to recalibrate their AI intuition by building something real&nbsp;&mdash; not reading about it. Live, bookable, in production. The methodology: Dream big &rarr; Feel heard &rarr; Scope down intentionally.</p>
+      <div class="project-footer">
+        <div class="project-tech">
+          <span class="tech-badge">Vercel</span>
+          <span class="tech-badge">Claude API</span>
+        </div>
+        <a href="https://www.buildfirst.io" class="project-link" target="_blank">BuildFirst.io &#8599;</a>
+      </div>
+    </div>
+
+    <!-- 6. DIGITAL CLONE -->
+    <div class="project-card">
+      <div class="project-tag">AI Product &middot; Luminary</div>
+      <h3>Digital Clone &mdash; Scaling a Thought Leader</h3>
+      <div class="project-problem">A highly sought-after business advisor can only be in one room at a time. Their ideas could reach thousands, but their time doesn't scale.</div>
+      <p class="project-desc">A premium platform creating a digital clone of one of the world's leading business advisors. Text chat, voice calls, WhatsApp&nbsp;&mdash; powered by RAG over their books, talks, and frameworks. Two-persona design: an assistant for practical logistics, the advisor for substance. 548-line PRD complete, build phase starting.</p>
+      <div class="project-footer">
+        <div class="project-tech">
+          <span class="tech-badge">Next.js 14</span>
+          <span class="tech-badge">Claude API</span>
+          <span class="tech-badge">ElevenLabs</span>
+          <span class="tech-badge">Pinecone</span>
+        </div>
+        <span class="project-status">In development</span>
+      </div>
+    </div>
+
+    <!-- 7. LEARNING PLATFORM (CONFIDENTIAL) -->
+    <div class="project-card">
+      <div class="project-tag">Learning Platform &middot; Insurance</div>
+      <h3>Interactive Insurance Training Platform</h3>
+      <div class="project-problem">Traditional insurance training is passive. Agents read manuals and take multiple-choice tests. Nothing sticks.</div>
+      <p class="project-desc">Built for an insurance agency. Interactive daily learning modules, adaptive quizzes from industry knowledge domains, branching scenarios with real business context, AI tutor, and skill progression tracking.</p>
+      <div class="project-footer">
+        <div class="project-tech">
+          <span class="tech-badge">React</span>
+          <span class="tech-badge">Tailwind</span>
+          <span class="tech-badge">shadcn/ui</span>
+          <span class="tech-badge">Vercel</span>
+        </div>
+        <span class="project-status">Prototype deployed (confidential)</span>
+      </div>
+    </div>
+
+    <!-- 8. BUILDFIRST WORKSHOP SKILLS -->
+    <div class="project-card">
+      <div class="project-tag">Workshop Framework &middot; Education</div>
+      <h3>BuildFirst &mdash; 7-Skill Workshop System</h3>
+      <div class="project-problem">Workshop participants need scaffolding, not slide decks. They need to build confidence by building something real&nbsp;&mdash; with the right guardrails at the right moments.</div>
+      <p class="project-desc">A structured 7-skill arc for absolute beginners: Quick Win &rarr; Dream Capture &rarr; PRD Builder &rarr; Build &rarr; Refine &rarr; Retrospective &rarr; Next Project. Designed as training wheels that can be discarded once confidence is built. Includes templates, coaching prompts, and a personal tech vocabulary builder. Tested with real participants.</p>
+      <div class="project-footer">
+        <div class="project-tech">
+          <span class="tech-badge">Claude Skills</span>
+          <span class="tech-badge">Coaching</span>
+        </div>
+        <span class="project-status">Active in workshops</span>
+      </div>
+    </div>
+
+    <!-- 9. SECOND BRAIN — wide -->
+    <div class="project-card wide">
+      <div class="project-tag">Productivity System &middot; Personal</div>
+      <h3>Second Brain &mdash; And Why I Stopped Using It</h3>
+      <div class="project-problem">Running seven experiments, a job search, a content pipeline, and a family. I needed a system to hold it all together.</div>
+      <p class="project-desc">A full productivity dashboard: daily logs, weekly planning, job search pipeline, prospect tracking, article drafts, traction metrics across all seven ventures. Uses the File System Access API&nbsp;&mdash; runs entirely local, no server, no subscriptions, just markdown files and a browser. Used it hard for weeks. Then gradually stopped. Sometimes the act of building the system gives you the clarity, and then you don't need the system anymore. The understanding transfers to you. That's a useful thing to learn about tools.</p>
+      <div class="project-footer">
+        <div class="project-tech">
+          <span class="tech-badge">HTML</span>
+          <span class="tech-badge">File System Access API</span>
+          <span class="tech-badge">Markdown</span>
+        </div>
+        <span class="project-status">Built &middot; Used &middot; Learned from</span>
+      </div>
+    </div>
+
+    <!-- 10. RECIPE ADAPTER -->
+    <div class="project-card">
+      <div class="project-tag">The AI Cookbook &middot; Tool</div>
+      <h3>Recipe Adapter &mdash; Dietary Recipe Conversion</h3>
+      <div class="project-problem">Every recipe online assumes a standard diet. If you need gout-friendly, heart-healthy, or high-protein versions, you're on your own.</div>
+      <p class="project-desc">Paste any recipe, select dietary needs, get an adapted version with clear explanations of what changed and why. Designed to be buildable in a single afternoon. Full PRD and wireframe complete. Uses Gemini API free tier&nbsp;&mdash; no credit card, no backend, no excuses.</p>
+      <div class="project-footer">
+        <div class="project-tech">
+          <span class="tech-badge">Vanilla JS</span>
+          <span class="tech-badge">Gemini API</span>
+        </div>
+        <span class="project-status">PRD complete</span>
+      </div>
+    </div>
+
+    <!-- CONVERSATION CARD -->
+    <div class="project-card conversation">
+      <div class="project-tag">The most useful thing on this page</div>
+      <h3>I'd rather show you what I'd build for you.</h3>
+      <div class="project-problem">A portfolio shows what I've built for other problems. The more interesting question is what I'd build for yours.</div>
+      <p class="project-desc">Tell me a real problem your team is losing time to right now. I'll come back with how I'd approach it, what I'd ask before touching any code, and a rough sketch of what the solution might look like. That conversation is more useful than any demo I could show you.</p>
+      <div class="project-footer">
+        <div class="project-tech"></div>
+        <a href="mailto:davidbeath8@gmail.com" class="project-link">Start the conversation &rarr;</a>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- SECTION 02: WRITING -->
+<section id="writing" class="deepdives">
+  <div class="section-header">
+    <span class="section-label">02 / Writing</span>
+    <div class="section-rule"></div>
+  </div>
+
+  <div class="articles-list">
+    <a href="quiet-advantage.html" class="article-item">
+      <div class="article-venue">Featured Article</div>
+      <h3>The Quiet Advantage</h3>
+      <p class="article-desc">Why small and mid-sized businesses have the edge in AI&nbsp;&mdash; for now. Enterprise pilots fail 95% of the time. The organizations with fewer resources have fewer barriers. This window won't stay open forever.</p>
+      <span class="article-link">Read the article</span>
+    </a>
+    <a href="https://theaicookbook.substack.com" class="article-item" target="_blank">
+      <div class="article-venue">The AI Cookbook &middot; Newsletter</div>
+      <h3>Practical AI. No hype. No predictions.</h3>
+      <p class="article-desc">A weekly newsletter for non-technical leaders who want to know what's actually useful. Recipes, frameworks, and honest reporting from someone building with AI every day.</p>
+      <span class="article-link">Subscribe free</span>
+    </a>
+    <a href="https://www.linkedin.com/in/dbeath/" class="article-item" target="_blank">
+      <div class="article-venue">LinkedIn</div>
+      <h3>I write on LinkedIn</h3>
+      <p class="article-desc">Regular posts on AI adoption, building with AI, the gap between understanding problems and building solutions, and what I'm learning along the way.</p>
+      <span class="article-link">Follow on LinkedIn</span>
+    </a>
+  </div>
+</section>
+
+<!-- BUILDFIRST BAND -->
+<section id="buildfirst" class="buildfirst-section">
+  <div class="section-header">
+    <span class="section-label">BuildFirst</span>
+    <div class="section-rule"></div>
+  </div>
+  <div class="buildfirst-grid">
+    <div>
+      <h2>Build first.<br>Theory later.</h2>
+      <p class="buildfirst-desc">BuildFirst is my hands-on AI workshop practice for executives. We don't teach leaders about AI&nbsp;&mdash; we put them in a room with real problems and don't let them leave until they've built something that works.</p>
+      <p class="buildfirst-desc">The methodology came from 20 years of watching expensive transformation programs produce zero lasting change. Dream big &rarr; Feel heard &rarr; Then scope down intentionally. Participants build working prototypes in the room, on their actual business problems. Not slides about AI. Actual AI tools. That day.</p>
+      <a href="https://www.buildfirst.io" class="btn-primary" style="background: var(--ink); margin-top: 0.5rem;" target="_blank">BuildFirst.io &rarr;</a>
+    </div>
+    <div>
+      <blockquote class="buildfirst-quote">
+        &ldquo;The technology is new. How to build isn't. Design thinking, experimentation, starting with real problems&nbsp;&mdash; these fundamentals still apply. AI just makes them faster.&rdquo;
+      </blockquote>
+    </div>
+  </div>
+</section>
+
+<!-- SECTION 03: BACKGROUND -->
+<section id="arc">
+  <div class="section-header">
+    <span class="section-label">03 / Background</span>
+    <div class="section-rule"></div>
+  </div>
+  <p class="arc-intro">Twenty years inside complex organizations&nbsp;&mdash; consulting, enterprise, startup, and now independent. The consistent thread: understanding how things actually work before proposing how to change them.</p>
+
+  <div class="timeline">
+    <div class="timeline-item">
+      <div class="timeline-meta">2019 &ndash; Present &middot; Richmond, VA</div>
+      <div class="timeline-title">DB8 LLC &amp; Luminary &mdash; Co-founder</div>
+      <p class="timeline-desc">Building with AI daily. Four active ventures: BuildFirst (executive workshops), Strange Circles (AI leader peer community), The AI Cookbook (newsletter), Luminary (talent agency for creative leaders).</p>
+    </div>
+    <div class="timeline-item">
+      <div class="timeline-meta">2023 &ndash; 2024 &middot; Remote</div>
+      <div class="timeline-title">NEOL &mdash; Head of Business Development</div>
+      <p class="timeline-desc">$1.2M new revenue in 8 months. Built go-to-market engine from scratch.</p>
+    </div>
+    <div class="timeline-item">
+      <div class="timeline-meta">2020 &ndash; 2023 &middot; Richmond, VA</div>
+      <div class="timeline-title">3Pillar Global &mdash; Director, Solutions</div>
+      <p class="timeline-desc">$30M in bookings. Built $4M strategic design practice from scratch in year one.</p>
+    </div>
+    <div class="timeline-item">
+      <div class="timeline-meta">2017 &ndash; 2019 &middot; Richmond, VA</div>
+      <div class="timeline-title">Capital One &mdash; Director, Product Management</div>
+      <p class="timeline-desc">Commercial Bank transformation. 4,000 workflows &rarr; 200. Salesforce implementation.</p>
+    </div>
+    <div class="timeline-item">
+      <div class="timeline-meta">2016 &ndash; 2017</div>
+      <div class="timeline-title">Smartup &mdash; Head of Americas</div>
+      <p class="timeline-desc">US market entry for enterprise SaaS. $1M+ ARR first year.</p>
+    </div>
+    <div class="timeline-item">
+      <div class="timeline-meta">2015 &ndash; 2016 &middot; Singapore</div>
+      <div class="timeline-title">DBS Bank &mdash; SVP, Innovation Management</div>
+      <p class="timeline-desc">DigiBank launch. Built innovation practice from scratch.</p>
+    </div>
+    <div class="timeline-item">
+      <div class="timeline-meta">2009 &ndash; 2015 &middot; London &middot; Singapore &middot; Dubai</div>
+      <div class="timeline-title">IDEO &mdash; Portfolio Director</div>
+      <p class="timeline-desc">$10M UAE joint venture. Singapore $2M &rarr; $8M. British Airways, IHG, Commonwealth Bank.</p>
+    </div>
+  </div>
+  <div class="timeline-early">
+    <strong>Early career:</strong> lastminute.com founding team (Europe's first unicorn) &middot; Jumeirah Hotels<br>
+    <strong>Education:</strong> Les Roches Hotel Management School &middot; Swiss Hotel Association Diploma
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact" class="contact">
+  <h2>Tell me a <em>real</em> problem.</h2>
+  <p class="contact-sub">Not a capabilities conversation. A specific problem someone on your team is losing time to right now. That's where it starts.</p>
+  <div class="contact-links">
+    <a href="mailto:davidbeath8@gmail.com" class="contact-link">Email directly</a>
+    <a href="https://www.linkedin.com/in/dbeath/" class="contact-link" target="_blank">LinkedIn</a>
+    <a href="https://theaicookbook.substack.com" class="contact-link" target="_blank">The AI Cookbook</a>
+    <a href="https://www.buildfirst.io" class="contact-link" target="_blank">BuildFirst.io</a>
+    <a href="https://github.com/dbdb168" class="contact-link" target="_blank">GitHub</a>
+  </div>
+</section>
+
+<footer>
+  <span class="footer-brand">David Beath &middot; DB8 LLC &middot; Richmond, VA</span>
+  <span class="footer-note">AI Practitioner. Builder.</span>
+</footer>
+
+</body>
+</html>

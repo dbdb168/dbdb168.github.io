@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Quiet Advantage — David Beath</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=DM+Mono:wght@300;400;500&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --ink: #0f0e0c;
+    --paper: #f5f0e8;
+    --amber: #c8771a;
+    --amber-light: #e8a84a;
+    --warm-mid: #8a7968;
+    --rule: #d4c9b4;
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--paper);
+    color: var(--ink);
+    font-family: 'Libre Baskerville', Georgia, serif;
+    font-size: 18px;
+    line-height: 1.8;
+    overflow-x: hidden;
+  }
+
+  body::before {
+    content: '';
+    position: fixed; inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 512 512' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
+    pointer-events: none; z-index: 1000; opacity: 0.5;
+  }
+
+  /* Nav */
+  nav {
+    padding: 1.5rem 4rem;
+    display: flex; justify-content: space-between; align-items: center;
+    border-bottom: 1px solid var(--rule);
+  }
+  .nav-brand {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.8rem; font-weight: 500;
+    letter-spacing: 0.12em; text-transform: uppercase;
+    color: var(--amber); text-decoration: none;
+  }
+  .nav-back {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.75rem; letter-spacing: 0.08em;
+    color: var(--warm-mid); text-decoration: none;
+    transition: color 0.2s;
+  }
+  .nav-back:hover { color: var(--ink); }
+
+  /* Article header */
+  .article-header {
+    max-width: 720px; margin: 0 auto;
+    padding: 6rem 2rem 3rem;
+  }
+  .article-category {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.7rem; letter-spacing: 0.15em;
+    text-transform: uppercase; color: var(--amber);
+    margin-bottom: 2rem;
+    display: flex; align-items: center; gap: 0.75rem;
+  }
+  .article-category::before {
+    content: ''; display: block; width: 2rem; height: 1px; background: var(--amber);
+  }
+  .article-header h1 {
+    font-family: 'Instrument Serif', Georgia, serif;
+    font-size: clamp(2.2rem, 4vw, 3.5rem);
+    line-height: 1.15; font-weight: 400;
+    letter-spacing: -0.02em; margin-bottom: 2rem;
+  }
+  .article-header h1 em { font-style: italic; color: var(--amber); }
+  .article-meta {
+    display: flex; align-items: center; gap: 2rem;
+    padding-top: 1.5rem; border-top: 1px solid var(--rule);
+  }
+  .article-author {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.75rem; letter-spacing: 0.05em; color: var(--ink);
+  }
+  .article-date {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.7rem; color: var(--warm-mid);
+  }
+
+  /* Pull quote at top */
+  .article-pullquote {
+    max-width: 720px; margin: 0 auto;
+    padding: 0 2rem 3rem;
+  }
+  .article-pullquote blockquote {
+    font-family: 'Instrument Serif', serif;
+    font-size: 1.2rem; font-style: italic;
+    line-height: 1.6; color: #3a3530;
+    padding: 1.5rem 0 1.5rem 1.5rem;
+    border-left: 3px solid var(--amber);
+  }
+
+  /* Article body */
+  .article-body {
+    max-width: 720px; margin: 0 auto;
+    padding: 0 2rem 6rem;
+  }
+  .article-body p {
+    margin-bottom: 1.5rem; color: #2a2520;
+  }
+  .article-body h2 {
+    font-family: 'Instrument Serif', serif;
+    font-size: 1.6rem; font-weight: 400;
+    margin-top: 3rem; margin-bottom: 1.25rem;
+    line-height: 1.25;
+  }
+  .article-body blockquote {
+    font-family: 'Instrument Serif', serif;
+    font-size: 1.1rem; font-style: italic;
+    line-height: 1.65; color: #3a3530;
+    padding: 1.5rem 0 1.5rem 1.5rem;
+    border-left: 3px solid var(--amber);
+    margin: 2rem 0;
+  }
+  .article-body .callout {
+    background: white; padding: 2rem;
+    border-left: 3px solid var(--amber);
+    margin: 2.5rem 0;
+    font-size: 1.05rem; font-weight: 700;
+    line-height: 1.6;
+  }
+  .article-body strong { color: var(--ink); }
+
+  /* Sources */
+  .article-sources {
+    max-width: 720px; margin: 0 auto;
+    padding: 0 2rem 4rem;
+  }
+  .article-sources h3 {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.7rem; letter-spacing: 0.12em;
+    text-transform: uppercase; color: var(--amber);
+    margin-bottom: 1rem;
+  }
+  .article-sources p {
+    font-size: 0.8rem; line-height: 1.6;
+    color: var(--warm-mid); margin-bottom: 0.5rem;
+    font-style: italic;
+  }
+
+  /* Author bio */
+  .article-bio {
+    max-width: 720px; margin: 0 auto;
+    padding: 2rem;
+    border-top: 1px solid var(--rule);
+  }
+  .article-bio p {
+    font-size: 0.9rem; line-height: 1.7;
+    color: #5a5048; font-style: italic;
+  }
+  .article-bio a {
+    color: var(--amber); text-decoration: none;
+  }
+  .article-bio a:hover { text-decoration: underline; }
+
+  /* Footer */
+  .article-footer {
+    background: var(--ink); padding: 4rem;
+    text-align: center;
+  }
+  .article-footer h2 {
+    font-family: 'Instrument Serif', serif;
+    font-size: 2rem; color: var(--paper);
+    font-weight: 400; margin-bottom: 1rem;
+  }
+  .article-footer h2 em { color: var(--amber-light); }
+  .article-footer p {
+    font-size: 0.95rem; color: #a09888;
+    margin-bottom: 2rem; max-width: 440px;
+    margin-left: auto; margin-right: auto;
+  }
+  .article-footer-links {
+    display: flex; justify-content: center; gap: 1.5rem; flex-wrap: wrap;
+  }
+  .article-footer-link {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.75rem; letter-spacing: 0.08em;
+    text-transform: uppercase; color: var(--amber-light);
+    text-decoration: none; padding: 0.75rem 1.5rem;
+    border: 1px solid rgba(255,255,255,0.15);
+    transition: border-color 0.2s, background 0.2s;
+  }
+  .article-footer-link:hover {
+    border-color: var(--amber-light); background: rgba(232,168,74,0.08);
+  }
+
+  .footer-bar {
+    background: var(--ink); border-top: 1px solid rgba(255,255,255,0.06);
+    padding: 1.5rem 4rem; text-align: center;
+  }
+  .footer-bar span {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.65rem; color: #4a4038;
+  }
+
+  @media (max-width: 768px) {
+    nav { padding: 1rem 1.5rem; }
+    .article-header { padding: 4rem 1.5rem 2rem; }
+    .article-pullquote, .article-body, .article-sources, .article-bio { padding-left: 1.5rem; padding-right: 1.5rem; }
+    .article-footer { padding: 3rem 1.5rem; }
+    .footer-bar { padding: 1.5rem; }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="index.html" class="nav-brand">David Beath</a>
+  <a href="index.html" class="nav-back">&larr; Back to portfolio</a>
+</nav>
+
+<div class="article-header">
+  <p class="article-category">AI for SMBs</p>
+  <h1>The Quiet Advantage: Why small and mid-sized businesses have the edge in AI <em>for now.</em></h1>
+  <div class="article-meta">
+    <span class="article-author">David Beath</span>
+    <span class="article-date">February 2026</span>
+  </div>
+</div>
+
+<div class="article-pullquote">
+  <blockquote>The strongest predictor of AI success isn't budget or talent. It's whether the CEO uses the tools daily. Leaders built their instincts before AI existed. Those instincts aren't wrong, they're incomplete. A few focused hours can change everything.</blockquote>
+</div>
+
+<div class="article-body">
+
+  <p>Small and middle market businesses, from owner-operated firms to PE-backed organizations with revenues up to $1 billion, form the backbone of the American economy. Together, these segments account for roughly two-thirds of private sector GDP and employ well over 100 million people.</p>
+
+  <p>When we talk about AI adoption, the conversation typically centers on Fortune 500 companies or government initiatives. However, the businesses that actually drive most of the economy are largely absent, and that is a problem. It is also, perhaps, an opportunity.</p>
+
+  <p>Large enterprises are struggling. According to MIT's research on AI adoption, 95% of enterprise AI pilots deliver zero measurable impact on the bottom line. Of all the large organizations that evaluate enterprise AI tools, only 60% reach pilot stage, only 20% of those pilots continue, and just 5% make it to full production.</p>
+
+  <p>The irony is sharp: the organizations with the most resources are the ones most hamstrung by governance committees, procurement cycles, and integration complexity. The organizations with fewer resources have fewer barriers.</p>
+
+  <h2>A Window of Advantage</h2>
+
+  <p>This creates something unusual: a period where small and mid-sized businesses have structural advantages over larger ones. Access to the same tools. Shorter decision chains. The ability to experiment without committee approval. Direct proximity to customers and market signals.</p>
+
+  <p>I do not know how long this window lasts. Nobody does.</p>
+
+  <p>Gartner recently noted that executives have a crucial three- to six-month window to define their agentic AI product strategy, as the industry is at an inflection point. That timeline may prove optimistic or conservative, but the underlying point stands: this window will not remain open indefinitely. Eventually, the larger players will figure out their challenges.</p>
+
+  <p>They always do.</p>
+
+  <div class="callout">But, there is a period, and we are in it now, where smaller and mid-sized businesses can develop real competitive advantage. Not by outspending anyone, but by out-learning and out-experimenting.</div>
+
+  <h2>Recalibrating Instincts</h2>
+
+  <p>Seizing this window requires something specific from leaders. Not delegation. Not a mandate to "figure out AI." It requires <em>personal engagement</em>.</p>
+
+  <p>Aishwarya Srinivasan, an AI researcher who has supported over 50 AI product deployments across companies including Amazon, OpenAI, and Google, puts it clearly:</p>
+
+  <blockquote>Leaders have built intuitions over 10 or 15 years and they are highly regarded for those intuitions. But now with AI in the picture, those intuitions are not wrong. However, they will have to be recalibrated.</blockquote>
+
+  <p>This is not a criticism. It is a recognition that the instincts leaders have built over decades of leading was formed before AI existed. Those instincts are not wrong. They are incomplete. The question is whether you will invest in updating them.</p>
+
+  <p>Recalibrating requires two things: time to experiment, and the willingness to learn from that experimentation yourself. There is no shortcut. You cannot delegate the development of your own judgment. And unlocking that time, even a few focused hours, becomes the critical first step.</p>
+
+  <p>Dan Shipper, co-founder and CEO of Every, has spent years studying AI adoption patterns through his company's consulting work with enterprises. He has observed that the single best predictor of whether a company succeeds with AI is whether the CEO uses tools like ChatGPT or Claude many times a day. Not whether they have hired AI experts. Not whether they have invested in infrastructure. Whether they personally use it.</p>
+
+  <p>Why? Because fluency changes judgment. Leaders with genuine AI fluency make better decisions, not because they have memorized features, but because they have developed judgment about what is possible, what is hard, and what is hype. They know which vendor pitches are realistic. They can evaluate opportunities more accurately.</p>
+
+  <h2>Enabling Your People</h2>
+
+  <p>When leaders develop AI fluency, something shifts in how they work with their teams. They can ask better questions. They can recognize when an AI-assisted approach might help, and when it will not. They can give their people permission and direction to experiment, and they understand the guardrails that need to be in place, because they understand what they are experimenting with.</p>
+
+  <p>Srinivasan emphasizes building a culture of empowerment, of augmenting AI into your workflows so that you can 10x what you're doing, instead of saying you'll be replaced if you don't adopt AI. The difference matters: one creates engagement, the other creates fear.</p>
+
+  <div class="callout">This is not about eliminating jobs. It is about increasing competitiveness. Innovating faster. Finding new markets. Understanding your customers better.</div>
+
+  <p>The owner or CEO who understands AI can unlock that potential across their organization. The one who does not is holding their team back without realizing it.</p>
+
+  <h2>Familiar Territory</h2>
+
+  <p>Kiriti Gavini, who works on Codex at OpenAI, offers a phrase worth sitting with: "Pain is the new moat."</p>
+
+  <p>Successful companies building with AI are successful not because they were first to market or had the fanciest features. They succeeded because they went through the effort of learning, implementing, and understanding what works and what does not.</p>
+
+  <p>For founders and leaders who have built businesses from scratch, or been brought in to architect new strategies, this should sound familiar. The work of figuring things out, experimenting, iterating, learning what actually works in your specific context, is territory you know. AI fluency is not a departure from that discipline. It is an extension of it.</p>
+
+  <p>And the good news is that it does not take months of courses. A few focused hours of actually building something, not watching demos, not reading articles, but hands-on building, can be enough to shift how you see what is possible. The fluency comes as a byproduct of doing useful work, not as a prerequisite for it.</p>
+
+  <h2>What's Really At Stake</h2>
+
+  <p>The AI conversation has been happening intensely at the enterprise level, within the Fortune 500, in government initiatives, across venture-backed startups.</p>
+
+  <p>Those conversations are expanding now, reaching businesses of every size and sector. The question is not whether this matters to your organization.</p>
+
+  <p>It is whether you will be part of shaping how it unfolds.</p>
+
+  <p>The tools are accessible. The barriers to entry are remarkably low. Many of the most powerful tools cost less than your phone bill, or nothing at all. For leaders willing to invest the time, and it is an investment, the opportunity to build genuine competitive advantage is real.</p>
+
+  <p>Srinivasan's closing advice: "Remain obsessed with your customers. Remain obsessed with the problem your business is solving. AI is just a tool." The leaders who approach it that way, focused on their business rather than the technology, will find they can build something their competitors cannot easily replicate.</p>
+
+  <p>The window is open. The question is how you choose to step through it.</p>
+
+</div>
+
+<div class="article-sources">
+  <h3>Sources</h3>
+  <p>National Center for the Middle Market, Middle Market Indicator, Year-End 2024. The Ohio State University Fisher College of Business.</p>
+  <p>U.S. Small Business Administration Office of Advocacy, Frequently Asked Questions About Small Business, July 2024.</p>
+  <p>MIT Sloan Management Review, The GenAI Divide: State of AI in Business 2025. Based on 52 organizational interviews and 153 leader surveys.</p>
+  <p>Gartner, Emerging Tech: The Future of Agentic AI in Enterprise Applications, August 2025.</p>
+  <p>Aishwarya Srinivasan and Kiriti Gavini, interviewed on Lenny's Podcast, January 2026.</p>
+  <p>Dan Shipper is the co-founder and CEO of Every, a media and software company at the forefront of AI adoption.</p>
+</div>
+
+<div class="article-bio">
+  <p>David Beath is the founder of <a href="https://www.buildfirst.io" target="_blank">BuildFirst</a>, where he helps leaders learn how to use AI using a hands-on approach. He believes there is an entirely new way of working emerging, and that it has the potential to bring with it a new era of competitiveness, where SMBs have an unfair advantage: their agility. He writes about his experiences with AI for a non-technical audience at <a href="https://theaicookbook.substack.com" target="_blank">The AI Cookbook</a>. He can be contacted at <a href="mailto:david@thisisluminary.co">david@thisisluminary.co</a>.</p>
+</div>
+
+<div class="article-footer">
+  <h2>Want to talk about <em>your</em> Quiet Advantage?</h2>
+  <p>If any of this resonated, I'd like to hear what you're working on.</p>
+  <div class="article-footer-links">
+    <a href="mailto:davidbeath8@gmail.com" class="article-footer-link">Email me</a>
+    <a href="https://www.buildfirst.io" class="article-footer-link" target="_blank">BuildFirst.io</a>
+    <a href="https://theaicookbook.substack.com" class="article-footer-link" target="_blank">The AI Cookbook</a>
+    <a href="index.html" class="article-footer-link">See what I've built</a>
+  </div>
+</div>
+
+<div class="footer-bar">
+  <span>David Beath &middot; DB8 LLC &middot; Richmond, VA</span>
+</div>
+
+</body>
+</html>
