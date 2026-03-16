@@ -3,7 +3,13 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>David Beath — AI Practitioner. Builder.</title>
+<title>David Beath: 20 years driving innovation. Now I build the fix.</title>
+<meta name="description" content="IDEO, Capital One, DBS, Independent. AI practitioner who builds working solutions to real business problems.">
+<meta property="og:title" content="David Beath | AI Practitioner. Builder.">
+<meta property="og:description" content="20 years inside complex organizations. Now I help mid-market businesses out-learn and out-experiment the bigger players.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://dbdb168.github.io">
+<meta name="twitter:card" content="summary_large_image">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=DM+Mono:wght@300;400;500&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
 <style>
@@ -16,10 +22,8 @@
     --rule: #d4c9b4;
     --code-bg: #1a1814;
   }
-
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
   html { scroll-behavior: smooth; }
-
   body {
     background: var(--paper);
     color: var(--ink);
@@ -28,7 +32,6 @@
     line-height: 1.7;
     overflow-x: hidden;
   }
-
   body::before {
     content: '';
     position: fixed;
@@ -38,7 +41,6 @@
     z-index: 1000;
     opacity: 0.5;
   }
-
   /* ─── NAV ─── */
   nav {
     position: fixed; top: 0; width: 100%;
@@ -63,19 +65,18 @@
     text-decoration: none; transition: color 0.2s;
   }
   .nav-links a:hover { color: var(--ink); }
-
   /* ─── HERO ─── */
   .hero {
-    min-height: 100vh; padding: 0 6rem;
-    display: grid; grid-template-columns: 1.2fr 1fr;
-    align-items: center; gap: 6rem; padding-top: 8rem;
+    min-height: 100vh; padding: 0 4rem;
+    display: grid; grid-template-columns: 1.3fr 1fr;
+    align-items: center; gap: 5rem; padding-top: 6rem;
   }
   .hero-left { max-width: 620px; }
   .hero-eyebrow {
     font-family: 'DM Mono', monospace;
     font-size: 0.72rem; letter-spacing: 0.15em;
     text-transform: uppercase; color: var(--amber);
-    margin-bottom: 2rem;
+    margin-bottom: 1.5rem;
     display: flex; align-items: center; gap: 0.75rem;
   }
   .hero-eyebrow::before {
@@ -83,31 +84,16 @@
   }
   h1 {
     font-family: 'Instrument Serif', Georgia, serif;
-    font-size: clamp(2.8rem, 4.5vw, 4.8rem);
+    font-size: clamp(2.6rem, 4.2vw, 4.2rem);
     line-height: 1.08; font-weight: 400;
-    margin-bottom: 1rem; letter-spacing: -0.02em;
+    margin-bottom: 2rem; letter-spacing: -0.02em;
   }
   h1 em { font-style: italic; color: var(--amber); }
-  .hero-sub {
-    font-family: 'Instrument Serif', Georgia, serif;
-    font-size: clamp(1.4rem, 2.2vw, 2rem);
-    line-height: 1.3; font-weight: 400;
-    color: var(--warm-mid); margin-bottom: 2.5rem;
-  }
   .hero-description {
-    font-size: 1rem; line-height: 1.85;
-    color: #5a5048; margin-bottom: 1.5rem; max-width: 500px;
+    font-size: 1.05rem; line-height: 1.8;
+    color: #3a3530; margin-bottom: 2.5rem; max-width: 540px;
   }
-  .hero-article-link {
-    font-family: 'DM Mono', monospace;
-    font-size: 0.78rem; color: var(--amber);
-    text-decoration: none; display: inline-flex;
-    align-items: center; gap: 0.4rem;
-    margin-bottom: 2.5rem; transition: color 0.2s; line-height: 1.5;
-  }
-  .hero-article-link:hover { text-decoration: underline; }
   .hero-cta { display: flex; gap: 1.25rem; flex-wrap: wrap; }
-
   .btn-primary {
     background: var(--ink); color: var(--paper);
     padding: 0.9rem 2rem;
@@ -127,30 +113,48 @@
     transition: border-color 0.2s, transform 0.15s;
   }
   .btn-secondary:hover { border-color: var(--ink); transform: translateY(-1px); }
-
-  /* Hero right — The Approach */
-  .hero-right { border-left: 1px solid var(--rule); padding-left: 4rem; }
-  .approach-label {
+  /* Hero right — Proof bar */
+  .hero-right { border-left: 1px solid var(--rule); padding-left: 3.5rem; }
+  .proof-label {
     font-family: 'DM Mono', monospace;
     font-size: 0.7rem; letter-spacing: 0.15em;
-    text-transform: uppercase; color: var(--amber); margin-bottom: 2rem;
+    text-transform: uppercase; color: var(--amber); margin-bottom: 2.5rem;
   }
-  .approach-step { margin-bottom: 2.5rem; padding-bottom: 2.5rem; border-bottom: 1px solid var(--rule); }
-  .approach-step:last-child { border-bottom: none; margin-bottom: 0; padding-bottom: 0; }
-  .approach-step-num {
-    font-family: 'DM Mono', monospace;
-    font-size: 0.65rem; letter-spacing: 0.1em; color: var(--amber); margin-bottom: 0.4rem;
-  }
-  .approach-step-title {
+  .proof-item { margin-bottom: 2.2rem; padding-bottom: 2.2rem; border-bottom: 1px solid var(--rule); }
+  .proof-item:last-child { border-bottom: none; margin-bottom: 0; padding-bottom: 0; }
+  .proof-stat {
     font-family: 'Instrument Serif', serif;
-    font-size: 1.15rem; font-weight: 400; margin-bottom: 0.4rem; line-height: 1.25;
+    font-size: 2rem; font-weight: 400; color: var(--ink);
+    line-height: 1.1; margin-bottom: 0.3rem;
   }
-  .approach-step-desc { font-size: 0.85rem; line-height: 1.65; color: #5a5048; }
-
+  .proof-context {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.72rem; letter-spacing: 0.04em; color: var(--warm-mid);
+    line-height: 1.5;
+  }
+  /* ─── CONVERSATION CTA ─── */
+  .conversation-band {
+    background: var(--amber); color: var(--ink);
+    padding: 5rem 4rem;
+    display: grid; grid-template-columns: 1fr;
+    max-width: 720px;
+  }
+  .conversation-band h2 {
+    font-family: 'Instrument Serif', serif;
+    font-size: clamp(2rem, 3.5vw, 3rem);
+    font-weight: 400; line-height: 1.15;
+    margin-bottom: 1.25rem;
+  }
+  .conversation-band p {
+    font-size: 1.05rem; line-height: 1.8;
+    color: rgba(15,14,12,0.8); margin-bottom: 1.5rem; max-width: 520px;
+  }
+  .conversation-band .btn-primary { background: var(--ink); }
+  .conversation-band .btn-primary:hover { background: #2a2520; }
   /* ─── SECTIONS ─── */
-  section { padding: 8rem 6rem; }
+  section { padding: 7rem 4rem; }
   .section-header {
-    display: flex; align-items: baseline; gap: 1.5rem; margin-bottom: 5rem;
+    display: flex; align-items: baseline; gap: 1.5rem; margin-bottom: 4rem;
   }
   .section-label {
     font-family: 'DM Mono', monospace;
@@ -164,129 +168,226 @@
     font-weight: 400; line-height: 1.15;
     letter-spacing: -0.01em; margin-bottom: 1.5rem;
   }
-
-  /* ─── BUILT ─── */
-  .built-intro {
-    max-width: 640px; font-size: 1.05rem; line-height: 1.8;
-    color: #3a3530; margin-bottom: 5rem;
+  /* ─── OS SECTION ─── */
+  .os-section { background: var(--ink); color: var(--paper); }
+  .os-section .section-label { color: var(--amber-light); }
+  .os-section .section-rule { background: rgba(255,255,255,0.1); }
+  .os-section h2 { color: var(--paper); }
+  .os-intro {
+    max-width: 680px; font-size: 1.05rem; line-height: 1.8;
+    color: #b0a898; margin-bottom: 4rem;
   }
-  .projects-grid {
-    display: grid; grid-template-columns: repeat(3, 1fr); gap: 3px;
+  .os-grid {
+    display: grid; grid-template-columns: 1fr 1fr;
+    gap: 4rem; margin-bottom: 4rem;
   }
-  .project-card {
-    background: white; padding: 2.8rem;
-    position: relative; overflow: hidden;
-    transition: transform 0.2s;
-    display: flex; flex-direction: column;
+  .os-narrative {
+    font-size: 0.95rem; line-height: 1.8; color: #a09888;
   }
-  .project-card::before {
-    content: ''; position: absolute; bottom: 0; left: 0;
-    width: 100%; height: 3px; background: var(--amber);
-    transform: scaleX(0); transform-origin: left;
-    transition: transform 0.3s ease;
+  .os-narrative p { margin-bottom: 1.25rem; }
+  .os-narrative strong { color: var(--paper); font-weight: 400; }
+  .os-layers { display: flex; flex-direction: column; gap: 1.5rem; }
+  .os-layer {
+    padding: 1.5rem;
+    border: 1px solid rgba(255,255,255,0.08);
+    transition: border-color 0.3s, background 0.3s;
   }
-  .project-card:hover { transform: translateY(-3px); }
-  .project-card:hover::before { transform: scaleX(1); }
-
-  .project-tag {
+  .os-layer:hover {
+    border-color: var(--amber);
+    background: rgba(200,119,26,0.05);
+  }
+  .os-layer-label {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.62rem; letter-spacing: 0.12em;
+    text-transform: uppercase; color: var(--amber-light);
+    margin-bottom: 0.6rem;
+  }
+  .os-layer-title {
+    font-family: 'Instrument Serif', serif;
+    font-size: 1.15rem; font-weight: 400;
+    color: var(--paper); margin-bottom: 0.4rem; line-height: 1.3;
+  }
+  .os-layer-desc {
+    font-size: 0.82rem; line-height: 1.65; color: #8a8070;
+  }
+  .os-skills-grid {
+    display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 2px;
+  }
+  .os-skill {
+    background: rgba(255,255,255,0.03);
+    padding: 1.25rem 1.5rem;
+    transition: background 0.2s;
+  }
+  .os-skill:hover { background: rgba(255,255,255,0.06); }
+  .os-skill-name {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.72rem; letter-spacing: 0.05em;
+    color: var(--amber-light); margin-bottom: 0.35rem;
+  }
+  .os-skill-desc {
+    font-size: 0.78rem; line-height: 1.55; color: #7a7068;
+  }
+  .os-skill-tag {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.55rem; letter-spacing: 0.1em;
+    text-transform: uppercase; color: #5a5048;
+    margin-top: 0.5rem;
+  }
+  .os-evolution {
+    margin-top: 3rem;
+    padding-top: 3rem;
+    border-top: 1px solid rgba(255,255,255,0.06);
+  }
+  .os-evolution-label {
     font-family: 'DM Mono', monospace;
     font-size: 0.65rem; letter-spacing: 0.12em;
-    text-transform: uppercase; color: var(--amber);
-    margin-bottom: 1.25rem;
-    display: flex; align-items: center; gap: 0.5rem;
+    text-transform: uppercase; color: var(--amber-light);
+    margin-bottom: 1.5rem;
   }
-  .project-tag::before { content: '\25B8'; font-size: 0.5rem; }
-  .project-card h3 {
+  .os-evo-steps {
+    display: grid; grid-template-columns: repeat(4, 1fr); gap: 2rem;
+  }
+  .os-evo-step {}
+  .os-evo-num {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.6rem; color: var(--amber); margin-bottom: 0.4rem;
+  }
+  .os-evo-title {
     font-family: 'Instrument Serif', serif;
-    font-size: 1.4rem; font-weight: 400;
-    margin-bottom: 0.75rem; line-height: 1.25;
+    font-size: 1rem; color: var(--paper); margin-bottom: 0.3rem;
+  }
+  .os-evo-desc {
+    font-size: 0.78rem; line-height: 1.55; color: #7a7068;
+  }
+  /* ─── PROJECTS (ACCORDION) ─── */
+  .built-intro {
+    max-width: 640px; font-size: 1.05rem; line-height: 1.8;
+    color: #3a3530; margin-bottom: 4rem;
+  }
+  .project-list { max-width: 100%; }
+  .project-accordion {
+    border-top: 1px solid var(--rule);
+    transition: background 0.2s;
+  }
+  .project-accordion:last-child { border-bottom: 1px solid var(--rule); }
+  .project-accordion.is-open { background: white; }
+  .project-header {
+    display: grid;
+    grid-template-columns: 140px 1fr auto;
+    align-items: baseline;
+    gap: 2rem;
+    padding: 1.8rem 0;
+    cursor: pointer;
+    user-select: none;
+    transition: padding 0.3s;
+  }
+  .project-accordion.is-open .project-header {
+    padding: 1.8rem 2rem;
+  }
+  .project-header:hover .project-title { color: var(--amber); }
+  .project-type {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.65rem; letter-spacing: 0.1em;
+    text-transform: uppercase; color: var(--amber);
+    padding-top: 0.15rem;
+  }
+  .project-header-main { min-width: 0; }
+  .project-title {
+    font-family: 'Instrument Serif', serif;
+    font-size: 1.5rem; font-weight: 400;
+    line-height: 1.25; transition: color 0.2s;
+    margin-bottom: 0.3rem;
+  }
+  .project-oneliner {
+    font-size: 0.88rem; color: var(--warm-mid); line-height: 1.5;
+  }
+  .project-toggle {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.75rem; color: var(--warm-mid);
+    display: flex; align-items: center; gap: 0.4rem;
+    white-space: nowrap; padding-top: 0.15rem;
+    transition: color 0.2s;
+  }
+  .project-header:hover .project-toggle { color: var(--ink); }
+  .project-toggle-icon {
+    display: inline-block; transition: transform 0.3s ease;
+    font-size: 0.9rem;
+  }
+  .project-accordion.is-open .project-toggle-icon {
+    transform: rotate(45deg);
+  }
+  .project-body {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.4s ease, opacity 0.3s ease;
+    opacity: 0;
+  }
+  .project-accordion.is-open .project-body {
+    opacity: 1;
+  }
+  .project-body-inner {
+    padding: 0 2rem 2.5rem 2rem;
+    display: grid; grid-template-columns: 1fr 1fr; gap: 2.5rem;
+  }
+  .project-problem-label {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.6rem; letter-spacing: 0.12em;
+    text-transform: uppercase; color: var(--amber); margin-bottom: 0.5rem;
   }
   .project-problem {
     font-family: 'DM Mono', monospace;
-    font-size: 0.75rem; color: var(--warm-mid);
-    line-height: 1.6; margin-bottom: 1rem; padding: 0.75rem;
+    font-size: 0.78rem; color: var(--warm-mid);
+    line-height: 1.65; margin-bottom: 1.5rem; padding: 1rem;
     background: var(--paper); border-left: 2px solid var(--amber);
   }
-  .project-problem::before {
-    content: 'THE PROBLEM: '; font-size: 0.6rem;
-    letter-spacing: 0.1em; color: var(--amber);
+  .project-desc {
+    font-size: 0.92rem; line-height: 1.75;
+    color: #4a4540; margin-bottom: 1.5rem;
   }
   .project-backstory {
-    font-size: 0.82rem; line-height: 1.65; color: #6a6058;
-    margin-bottom: 1rem; padding: 0.75rem 0;
-    border-top: 1px dashed var(--rule);
+    font-size: 0.85rem; line-height: 1.7; color: #6a6058;
+    padding: 1rem 0; border-top: 1px dashed var(--rule);
     font-style: italic;
   }
   .project-backstory strong {
-    font-style: normal; font-size: 0.65rem;
+    font-style: normal; font-size: 0.62rem;
     font-family: 'DM Mono', monospace;
     letter-spacing: 0.08em; text-transform: uppercase;
-    color: var(--warm-mid); display: block; margin-bottom: 0.3rem;
+    color: var(--warm-mid); display: block; margin-bottom: 0.25rem;
   }
-  .project-desc {
-    font-size: 0.9rem; line-height: 1.7;
-    color: #4a4540; margin-bottom: 1.5rem; flex: 1;
-  }
-  .project-footer {
-    display: flex; justify-content: space-between;
-    align-items: flex-end; gap: 1rem; margin-top: auto;
-  }
-  .project-tech { display: flex; gap: 0.4rem; flex-wrap: wrap; }
+  .project-meta { display: flex; flex-direction: column; justify-content: space-between; }
+  .project-tech { display: flex; gap: 0.4rem; flex-wrap: wrap; margin-bottom: 1.5rem; }
   .tech-badge {
     font-family: 'DM Mono', monospace;
-    font-size: 0.6rem; letter-spacing: 0.08em;
+    font-size: 0.58rem; letter-spacing: 0.08em;
     text-transform: uppercase; padding: 0.2rem 0.5rem;
     background: var(--paper); color: var(--warm-mid);
     border: 1px solid var(--rule);
   }
+  .tech-badge-dark {
+    background: transparent; color: var(--amber-light);
+    border-color: rgba(255,255,255,0.12);
+  }
+  .project-links-row { display: flex; gap: 1rem; flex-wrap: wrap; align-items: center; }
   .project-link {
     font-family: 'DM Mono', monospace;
-    font-size: 0.7rem; color: var(--amber);
-    text-decoration: none; letter-spacing: 0.05em; white-space: nowrap;
+    font-size: 0.72rem; color: var(--amber);
+    text-decoration: none; letter-spacing: 0.05em;
   }
   .project-link:hover { text-decoration: underline; }
-  .project-links { display: flex; gap: 1rem; align-items: center; }
   .project-status {
     font-family: 'DM Mono', monospace;
-    font-size: 0.6rem; letter-spacing: 0.08em;
+    font-size: 0.62rem; letter-spacing: 0.08em;
     text-transform: uppercase; color: var(--warm-mid);
-    white-space: nowrap;
   }
-
-  /* Featured card */
-  .project-card.featured {
-    background: var(--ink); color: var(--paper); grid-column: span 2;
-  }
-  .project-card.featured h3 { color: var(--paper); }
-  .project-card.featured .project-desc { color: #c8bfb0; }
-  .project-card.featured .project-problem { background: rgba(255,255,255,0.06); color: #a09888; }
-  .project-card.featured .tech-badge { background: transparent; color: var(--amber-light); border-color: rgba(255,255,255,0.15); }
-  .project-card.featured .project-backstory { color: #9a9080; border-top-color: rgba(255,255,255,0.1); }
-
-  /* Wide card */
-  .project-card.wide { grid-column: span 2; }
-
-  /* Conversation card */
-  .project-card.conversation {
-    background: var(--amber); color: var(--ink); grid-column: 1 / -1;
-  }
-  .project-card.conversation .project-tag { color: rgba(15,14,12,0.6); }
-  .project-card.conversation .project-tag::before { color: rgba(15,14,12,0.4); }
-  .project-card.conversation .project-problem {
-    background: rgba(255,255,255,0.2); border-left-color: var(--ink); color: rgba(15,14,12,0.7);
-  }
-  .project-card.conversation .project-problem::before { color: var(--ink); }
-  .project-card.conversation .project-desc { color: rgba(15,14,12,0.8); }
-  .project-card.conversation .project-link { color: var(--ink); font-size: 0.8rem; font-weight: 500; }
-  .project-card.conversation::before { background: var(--ink); }
-
   /* ─── WRITING ─── */
   .deepdives { background: #1a1814; color: var(--paper); }
   .deepdives .section-label { color: var(--amber-light); }
   .deepdives .section-rule { background: rgba(255,255,255,0.1); }
   .deepdives h2 { color: var(--paper); }
   .articles-list {
-    display: grid; grid-template-columns: 1fr 1fr; gap: 2.5rem; margin-top: 1.5rem;
+    display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; margin-top: 1rem;
   }
   .article-item {
     padding: 2.5rem; border: 1px solid rgba(255,255,255,0.08);
@@ -315,27 +416,6 @@
   }
   .article-link::after { content: '\2192'; }
   .article-link:hover { text-decoration: underline; }
-
-  /* ─── BUILDFIRST BAND ─── */
-  .buildfirst-section { background: var(--amber); color: var(--ink); }
-  .buildfirst-section .section-label { color: rgba(15,14,12,0.5); }
-  .buildfirst-section .section-rule { background: rgba(15,14,12,0.2); }
-  .buildfirst-grid {
-    display: grid; grid-template-columns: 1.4fr 1fr;
-    gap: 6rem; align-items: center;
-  }
-  .buildfirst-section h2 { font-size: clamp(2.5rem, 4vw, 4rem); margin-bottom: 1.5rem; }
-  .buildfirst-desc {
-    font-size: 1.05rem; line-height: 1.8;
-    color: rgba(15,14,12,0.8); margin-bottom: 1.5rem;
-  }
-  .buildfirst-quote {
-    font-family: 'Instrument Serif', serif;
-    font-size: 1.5rem; font-style: italic; line-height: 1.5;
-    color: var(--ink); padding: 2.5rem;
-    background: rgba(255,255,255,0.25); border-left: 4px solid var(--ink);
-  }
-
   /* ─── BACKGROUND ─── */
   .arc-intro {
     max-width: 640px; font-size: 1.05rem; line-height: 1.8;
@@ -346,7 +426,7 @@
     content: ''; position: absolute; left: 0; top: 0.5rem; bottom: 0;
     width: 1px; background: var(--rule);
   }
-  .timeline-item { position: relative; margin-bottom: 2.5rem; padding-left: 2.5rem; }
+  .timeline-item { position: relative; margin-bottom: 2rem; padding-left: 2.5rem; }
   .timeline-item::before {
     content: ''; position: absolute; left: -2rem; top: 0.55rem;
     width: 7px; height: 7px; background: var(--amber);
@@ -373,15 +453,14 @@
     font-family: 'DM Mono', monospace; font-size: 0.7rem;
     letter-spacing: 0.08em; color: var(--warm-mid);
   }
-
   /* ─── CONTACT ─── */
   .contact {
     background: var(--ink); color: var(--paper);
-    text-align: center; padding: 10rem 6rem;
+    text-align: center; padding: 8rem 4rem;
   }
   .contact h2 {
-    font-size: clamp(3rem, 6vw, 6rem);
-    color: var(--paper); margin-bottom: 3rem;
+    font-size: clamp(2.5rem, 5vw, 5rem);
+    color: var(--paper); margin-bottom: 1.25rem;
   }
   .contact h2 em { color: var(--amber-light); }
   .contact-sub {
@@ -389,7 +468,6 @@
     margin-bottom: 3rem; max-width: 520px;
     margin-left: auto; margin-right: auto; line-height: 1.7;
   }
-  .contact-sub:empty { display: none; }
   .contact-links {
     display: flex; justify-content: center; gap: 1.5rem; flex-wrap: wrap;
   }
@@ -402,7 +480,6 @@
     transition: border-color 0.2s, background 0.2s;
   }
   .contact-link:hover { border-color: var(--amber-light); background: rgba(232,168,74,0.08); }
-
   /* ─── FOOTER ─── */
   footer {
     background: var(--ink); border-top: 1px solid rgba(255,255,255,0.06);
@@ -417,7 +494,6 @@
     font-family: 'DM Mono', monospace;
     font-size: 0.65rem; color: #4a4038;
   }
-
   /* ─── ANIMATIONS ─── */
   @keyframes fadeUp {
     from { opacity: 0; transform: translateY(24px); }
@@ -425,331 +501,410 @@
   }
   .hero-eyebrow { animation: fadeUp 0.6s ease both; }
   h1 { animation: fadeUp 0.7s 0.1s ease both; }
-  .hero-sub { animation: fadeUp 0.7s 0.15s ease both; }
   .hero-description { animation: fadeUp 0.7s 0.2s ease both; }
-  .hero-article-link { animation: fadeUp 0.7s 0.25s ease both; }
   .hero-cta { animation: fadeUp 0.7s 0.3s ease both; }
   .hero-right { animation: fadeUp 0.8s 0.35s ease both; }
-
   /* ─── RESPONSIVE ─── */
   @media (max-width: 1024px) {
     nav { padding: 1rem 2rem; }
     .nav-links { gap: 1.5rem; }
-    section { padding: 6rem 2.5rem; }
-    .hero { grid-template-columns: 1fr; padding: 9rem 2.5rem 5rem; gap: 3rem; min-height: auto; }
-    .hero-right { border-left: none; border-top: 1px solid var(--rule); padding-left: 0; padding-top: 2.5rem; }
-    .projects-grid { grid-template-columns: 1fr; }
-    .project-card.featured, .project-card.wide, .project-card.conversation { grid-column: span 1; }
+    section { padding: 5rem 2rem; }
+    .hero { grid-template-columns: 1fr; padding: 8rem 2rem 4rem; gap: 3rem; min-height: auto; }
+    .hero-right { border-left: none; border-top: 1px solid var(--rule); padding-left: 0; padding-top: 2rem; }
+    .conversation-band { padding: 4rem 2rem; }
+    .os-grid { grid-template-columns: 1fr; gap: 2.5rem; }
+    .os-evo-steps { grid-template-columns: 1fr 1fr; }
+    .project-header { grid-template-columns: 100px 1fr auto; gap: 1.25rem; }
+    .project-body-inner { grid-template-columns: 1fr; }
     .articles-list { grid-template-columns: 1fr; }
-    .buildfirst-grid { grid-template-columns: 1fr; gap: 3rem; }
-    .contact { padding: 8rem 2.5rem; }
     footer { flex-direction: column; gap: 0.5rem; text-align: center; }
   }
   @media (max-width: 640px) {
-    nav { padding: 1rem 1.5rem; }
+    nav { padding: 1rem 1.25rem; }
     .nav-links { gap: 1rem; }
     .nav-links a { font-size: 0.65rem; }
-    section { padding: 5rem 1.5rem; }
-    .hero { padding: 8rem 1.5rem 4rem; }
-    .contact { padding: 6rem 1.5rem; }
-    footer { padding: 1.5rem 1.5rem; }
+    section { padding: 4rem 1.25rem; }
+    .hero { padding: 7rem 1.25rem 3rem; }
+    .conversation-band { padding: 3rem 1.25rem; max-width: 100%; }
+    .os-evo-steps { grid-template-columns: 1fr; }
+    .os-skills-grid { grid-template-columns: 1fr 1fr; }
+    .project-header { grid-template-columns: 1fr; gap: 0.5rem; }
+    .project-type { display: none; }
+    .project-toggle { display: none; }
+    .project-accordion.is-open .project-header { padding: 1.5rem 1.25rem; }
+    .project-body-inner { padding: 0 1.25rem 2rem; }
+    .contact { padding: 5rem 1.25rem; }
+    footer { padding: 1.5rem 1.25rem; }
   }
 </style>
 </head>
 <body>
-
 <!-- NAV -->
 <nav>
   <a href="#" class="nav-brand">David Beath</a>
   <ul class="nav-links">
-    <li><a href="#built">Portfolio</a></li>
+    <li><a href="#os">Operating System</a></li>
+    <li><a href="#built">Projects</a></li>
     <li><a href="#writing">Writing</a></li>
-    <li><a href="#buildfirst">BuildFirst</a></li>
     <li><a href="#arc">Background</a></li>
     <li><a href="#contact">Contact</a></li>
   </ul>
 </nav>
-
 <!-- HERO -->
 <section class="hero">
   <div class="hero-left">
-    <p class="hero-eyebrow">AI Practitioner &middot; Product Development &middot; Business Development &middot; Builder</p>
-    <h1>20 years of turning ideas into <em>outcomes.</em></h1>
-    <p class="hero-sub">Now I help leaders do the same with AI.</p>
+    <p class="hero-eyebrow">IDEO &middot; Capital One &middot; DBS &middot; Independent</p>
+    <h1>Tell me a <em>real</em> problem.<br>I'll build the fix.</h1>
     <p class="hero-description">
-      I've spent 20 years embedded inside complex organizations learning to understand what's actually broken&nbsp;&mdash; then building the smallest thing that fixes it. Now I help businesses develop what I call their Quiet Advantage: the ability to out-learn and out-experiment the bigger players while they're stuck in committee.
+      Twenty years inside complex organizations driving innovation and digital transformation. Now I help mid-market businesses develop their Quiet Advantage: the ability to out-learn and out-experiment the bigger players.
     </p>
-    <a href="quiet-advantage.html" class="hero-article-link">Read: The Quiet Advantage &mdash; why smaller businesses are winning the AI race &rarr;</a>
     <div class="hero-cta">
-      <a href="#built" class="btn-primary">See what I've built</a>
-      <a href="#contact" class="btn-secondary">Get in touch</a>
+      <a href="mailto:david@thisisluminary.co" class="btn-primary">Start a conversation</a>
+      <a href="#os" class="btn-secondary">See how I work</a>
     </div>
   </div>
-
   <div class="hero-right">
-    <p class="approach-label">The Approach</p>
-    <div class="approach-step">
-      <div class="approach-step-num">01</div>
-      <div class="approach-step-title">Understand before building</div>
-      <p class="approach-step-desc">Ask why until you understand what's actually broken. The problem is 80% of the work. Rushing this is where most projects die.</p>
+    <p class="proof-label">By the numbers</p>
+    <div class="proof-item">
+      <div class="proof-stat">$30M</div>
+      <div class="proof-context">in new revenue enabled by a prototype-first approach to enterprise solutions. At 3Pillar Global.</div>
     </div>
-    <div class="approach-step">
-      <div class="approach-step-num">02</div>
-      <div class="approach-step-title">PRD before a single line of code</div>
-      <p class="approach-step-desc">Prototype your way to clarity. A clear understanding of the solution is the brief. Speed comes next.</p>
+    <div class="proof-item">
+      <div class="proof-stat">4,000 &rarr; 200</div>
+      <div class="proof-context">workflows simplified at Capital One Commercial Bank.</div>
     </div>
-    <div class="approach-step">
-      <div class="approach-step-num">03</div>
-      <div class="approach-step-title">Iterate fast, measure everything</div>
-      <p class="approach-step-desc">Ship the smallest working thing. The ability to iterate is the real advantage&nbsp;&mdash; not the first build.</p>
+    <div class="proof-item">
+      <div class="proof-stat">$2M &rarr; $8M</div>
+      <div class="proof-context">Singapore revenue growth at IDEO. $10M UAE joint venture.</div>
     </div>
-    <div class="approach-step">
-      <div class="approach-step-num">04</div>
-      <div class="approach-step-title">Minimum effective dose</div>
-      <p class="approach-step-desc">Most organizations don't need more AI tools. They need fewer, aimed more precisely at the right problem.</p>
+    <div class="proof-item">
+      <div class="proof-stat">23 custom skills</div>
+      <div class="proof-context">powering my AI operating system. Built, tested, iterated. In daily use.</div>
     </div>
   </div>
 </section>
-
-<!-- SECTION 01: WHAT I'VE BUILT -->
+<!-- CONVERSATION CTA -->
+<div class="conversation-band">
+  <div>
+    <h2>I'd rather show you what I'd build for you.</h2>
+    <p>
+      My portfolio shows what I've built for problems I've seen or experienced. I'm more interested in those that you are experiencing. Talk to me about a specific problem you or someone on your team would like to solve. I'll come back with how I'd approach it, what I'd ask before touching any code, and a rough sketch of the solution.
+    </p>
+    <a href="mailto:david@thisisluminary.co" class="btn-primary">Tell me the problem &rarr;</a>
+  </div>
+</div>
+<!-- SECTION 01: THE OPERATING SYSTEM -->
+<section id="os" class="os-section">
+  <div class="section-header">
+    <span class="section-label">01 / The Operating System</span>
+    <div class="section-rule"></div>
+  </div>
+  <h2>I have built the system I run my company on.</h2>
+  <p class="os-intro">Over the past year I've built an AI-native operating system for running my entire business: strategy, pipeline, content, coaching, daily operations. Not a dashboard. Not an app. A living architecture of 23 custom skills and plugins that evolves every week as I learn what actually works.</p>
+  <div class="os-grid">
+    <div class="os-narrative">
+      <p><strong>I use AI as a co-founder.</strong> My operating system sits across Gmail, Google Calendar, pipeline data, and content pipelines. It runs my morning check-in, reviews my pipeline against a $350K revenue target, drafts outreach in my voice, generates coaching proposals, publishes my newsletter, and flags when a deal is going quiet. All without me opening a spreadsheet.</p>
+      <p>The architecture matters: every skill reads from a single source of truth. Pipeline data flows into strategy reviews. Strategy reviews inform weekly planning. Weekly planning creates calendar blocks. Nothing exists in isolation. <strong>The system thinks in connections, not tasks.</strong></p>
+      <p>It started as a 650-line PRD. Then an over-engineered four-plugin monster called Nebula. I killed that, stripped it back, and rebuilt it around a conversational skills architecture. Anthropic's skill-creator handles the testing and iteration loop. I design the skills, define the context, and the platform evolves the system alongside me.</p>
+    </div>
+    <div class="os-layers">
+      <div class="os-layer">
+        <div class="os-layer-label">Strategy Layer</div>
+        <div class="os-layer-title">Thinks like a co-founder</div>
+        <div class="os-layer-desc">Reads pipeline, revenue, and traction data. Proposes experiments. Calls time on ventures that aren't working. Connects daily activity to annual targets.</div>
+      </div>
+      <div class="os-layer">
+        <div class="os-layer-label">Operations Layer</div>
+        <div class="os-layer-title">Runs the daily rhythm</div>
+        <div class="os-layer-desc">Morning check-ins, weekly reviews, calendar blocking, email scanning. If it's not in the calendar, it doesn't get done. The system enforces that.</div>
+      </div>
+      <div class="os-layer">
+        <div class="os-layer-label">Growth Layer</div>
+        <div class="os-layer-title">Pipeline as a conversation</div>
+        <div class="os-layer-desc">Surfaces who to contact, drafts outreach, tracks commitments, flags quiet deals. CRM replacement that actually helps you think, not just record.</div>
+      </div>
+      <div class="os-layer">
+        <div class="os-layer-label">Content Layer</div>
+        <div class="os-layer-title">Two voices, multiple channels</div>
+        <div class="os-layer-desc">LinkedIn articles, newsletter digests, carousel content. Knows the difference between my personal voice and the BuildFirst brand voice.</div>
+      </div>
+      <div class="os-layer">
+        <div class="os-layer-label">Meta Layer</div>
+        <div class="os-layer-title">The system that builds the system</div>
+        <div class="os-layer-desc">Anthropic's skill-creator handles the test-and-iterate loop. I design the skills and define the context. The platform evolves the system alongside me.</div>
+      </div>
+    </div>
+  </div>
+  <!-- Skills grid -->
+  <div class="os-skills-grid">
+    <div class="os-skill">
+      <div class="os-skill-name">strategy-partner</div>
+      <div class="os-skill-desc">Co-founder brain. Reads 6 data files, proposes experiments, calls kills on ventures.</div>
+      <div class="os-skill-tag">Custom &middot; Daily use</div>
+    </div>
+    <div class="os-skill">
+      <div class="os-skill-name">daily-checkin</div>
+      <div class="os-skill-desc">Morning briefing. Calendar, priorities, pipeline context, email scan, weather.</div>
+      <div class="os-skill-tag">Custom &middot; Daily use</div>
+    </div>
+    <div class="os-skill">
+      <div class="os-skill-name">weekly-review</div>
+      <div class="os-skill-desc">Friday strategy review. Metrics, pipeline movement, lessons learned, next week plan.</div>
+      <div class="os-skill-tag">Custom &middot; Weekly</div>
+    </div>
+    <div class="os-skill">
+      <div class="os-skill-name">pipeline-review</div>
+      <div class="os-skill-desc">Health check against revenue target. Weighted pipeline, deal staging, staleness flags.</div>
+      <div class="os-skill-tag">Custom &middot; Weekly</div>
+    </div>
+    <div class="os-skill">
+      <div class="os-skill-name">content-engine</div>
+      <div class="os-skill-desc">Multi-channel content. LinkedIn, AI Cookbook, carousels. Two distinct voice profiles.</div>
+      <div class="os-skill-tag">Custom &middot; Weekly</div>
+    </div>
+    <div class="os-skill">
+      <div class="os-skill-name">one-pager</div>
+      <div class="os-skill-desc">Generates tailored client proposals. HTML one-pagers + companion emails.</div>
+      <div class="os-skill-tag">Custom &middot; On demand</div>
+    </div>
+    <div class="os-skill">
+      <div class="os-skill-name">ai-cookbook-digest</div>
+      <div class="os-skill-desc">Weekly newsletter assembly. Articles, curated links, industry signals.</div>
+      <div class="os-skill-tag">Custom &middot; Weekly</div>
+    </div>
+    <div class="os-skill">
+      <div class="os-skill-name">skill-creator</div>
+      <div class="os-skill-desc">Anthropic's platform tool. I use it to draft, test, and iterate on every custom skill in this system.</div>
+      <div class="os-skill-tag">Platform &middot; The OS builder</div>
+    </div>
+    <div class="os-skill">
+      <div class="os-skill-name">buildfirst-sherpa</div>
+      <div class="os-skill-desc">Coaching OS. Assessment intake, session prep, client briefings, graduation.</div>
+      <div class="os-skill-tag">Plugin &middot; 6 sub-skills</div>
+    </div>
+    <div class="os-skill">
+      <div class="os-skill-name">doc-coauthoring</div>
+      <div class="os-skill-desc">Structured co-authoring. Context transfer, iterative refinement, reader verification.</div>
+      <div class="os-skill-tag">Custom &middot; On demand</div>
+    </div>
+    <div class="os-skill">
+      <div class="os-skill-name">resume</div>
+      <div class="os-skill-desc">Sparring partner for resume tailoring. Gap analysis, framing principles, multiple formats.</div>
+      <div class="os-skill-tag">Custom &middot; On demand</div>
+    </div>
+    <div class="os-skill">
+      <div class="os-skill-name">schedule</div>
+      <div class="os-skill-desc">Scheduled and recurring tasks. Cron expressions for automation. Calendar integration.</div>
+      <div class="os-skill-tag">Custom &middot; Always on</div>
+    </div>
+  </div>
+  <!-- Evolution timeline -->
+  <div class="os-evolution">
+    <div class="os-evolution-label">How it evolved</div>
+    <div class="os-evo-steps">
+      <div class="os-evo-step">
+        <div class="os-evo-num">V1</div>
+        <div class="os-evo-title">The PRD</div>
+        <div class="os-evo-desc">650-line product requirement doc. Traditional approach. Useful for thinking, not for running.</div>
+      </div>
+      <div class="os-evo-step">
+        <div class="os-evo-num">V2</div>
+        <div class="os-evo-title">Nebula</div>
+        <div class="os-evo-desc">Four-plugin OS. Tried to do everything. Over-engineered. Killed it after 3 weeks.</div>
+      </div>
+      <div class="os-evo-step">
+        <div class="os-evo-num">V3</div>
+        <div class="os-evo-title">Skills Architecture</div>
+        <div class="os-evo-desc">Stripped back to conversational skills. Each skill does one thing well. Composable. Testable.</div>
+      </div>
+      <div class="os-evo-step">
+        <div class="os-evo-num">V4</div>
+        <div class="os-evo-title">Self-evolving</div>
+        <div class="os-evo-desc">Adopted Anthropic's skill-creator for the test/iterate loop. 23 custom skills and growing.</div>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- SECTION 02: PROJECTS -->
 <section id="built">
   <div class="section-header">
-    <span class="section-label">01 / My Portfolio</span>
+    <span class="section-label">02 / Projects</span>
     <div class="section-rule"></div>
   </div>
-  <p class="built-intro">Everything here started with a real problem. Some are deployed and in use. Some are tools I built for myself. Some taught me what not to build next time. The links go to live tools, GitHub repos, or an honest description of where things stand.</p>
-
-  <div class="projects-grid">
-
-    <!-- 1. MIXTAPE — Featured -->
-    <div class="project-card featured">
-      <div class="project-tag">Full-Stack Application &middot; Luminary</div>
-      <h3>Mixtape &mdash; Digital Mixtapes for the Streaming Era</h3>
-      <div class="project-problem">The art of making a mixtape&nbsp;&mdash; the curation, the message, the feeling of it&nbsp;&mdash; had no home in the streaming era. Spotify playlists are functional. They're not personal.</div>
-      <p class="project-desc">A fully deployed Next.js application. Search the Apple Music catalog, add liner notes, send via email or link&nbsp;&mdash; no account needed. Supabase database, SendGrid email integration, analytics dashboard, dynamic OG images for link previews. 50 commits. Production security. MIT licensed. This is what it looks like to go from problem to shipped product.</p>
-      <div class="project-footer">
-        <div class="project-tech">
-          <span class="tech-badge">Next.js 14</span>
-          <span class="tech-badge">TypeScript</span>
-          <span class="tech-badge">Supabase</span>
-          <span class="tech-badge">Apple Music API</span>
-          <span class="tech-badge">SendGrid</span>
-          <span class="tech-badge">Claude Code</span>
+  <p class="built-intro">The operating system runs the business. These are the standalone things I've shipped along the way. Each one started with a real problem, not a technology.</p>
+  <div class="project-list">
+    <!-- 1. MIXTAPE -->
+    <div class="project-accordion">
+      <div class="project-header" onclick="toggleProject(this)">
+        <div class="project-type">Full-Stack App</div>
+        <div class="project-header-main">
+          <div class="project-title">Mixtape: Digital Mixtapes for the Streaming Era</div>
+          <div class="project-oneliner">Deployed Next.js app. Search Apple Music, add liner notes, send via email or link. 50 commits. Production security. MIT licensed.</div>
         </div>
-        <div class="project-links">
-          <a href="https://mixtape.thisisluminary.co" class="project-link" target="_blank">Live app &#8599;</a>
-          <a href="https://github.com/dbdb168/mixtape" class="project-link" target="_blank">GitHub &#8599;</a>
+        <div class="project-toggle"><span class="project-toggle-icon">+</span></div>
+      </div>
+      <div class="project-body">
+        <div class="project-body-inner">
+          <div>
+            <div class="project-problem-label">The problem</div>
+            <div class="project-problem">The art of making a mixtape (the curation, the message, the feeling of it) had no home in the streaming era. Spotify playlists are functional. They're not personal.</div>
+            <p class="project-desc">Search the Apple Music catalog, add liner notes to each track, send via email or shareable link. No account needed. Supabase database, SendGrid email integration, analytics dashboard, dynamic OG images for link previews. This is what it looks like to go from a problem to a shipped product.</p>
+          </div>
+          <div class="project-meta">
+            <div class="project-tech">
+              <span class="tech-badge">Next.js 14</span>
+              <span class="tech-badge">TypeScript</span>
+              <span class="tech-badge">Supabase</span>
+              <span class="tech-badge">Apple Music API</span>
+              <span class="tech-badge">SendGrid</span>
+              <span class="tech-badge">Claude Code</span>
+            </div>
+            <div class="project-links-row">
+              <a href="https://mixtape.thisisluminary.co" class="project-link" target="_blank">Live app &#8599;</a>
+              <a href="https://github.com/dbdb168/mixtape" class="project-link" target="_blank">GitHub &#8599;</a>
+            </div>
+          </div>
         </div>
       </div>
     </div>
-
-    <!-- 2. STRANGER THINGS STUDY HALL -->
-    <div class="project-card">
-      <div class="project-tag">AI Tutor &middot; Personal Build</div>
-      <h3>The Upside Down Study Hall</h3>
-      <div class="project-problem">A bright kid gives the first answer, not the best answer. Generic tutoring tools don&rsquo;t know his curriculum or care about depth of thought.</div>
-      <p class="project-desc">Stranger Things-themed Sunday prep tutor. Upload a syllabus (photo, PDF, paste) and Claude generates standards-aligned missions with 3 progressive questions per topic. A mandatory follow-up mechanic ensures every answer gets one layer deeper. PRD to deployed product in one session.</p>
-      <div class="project-footer">
-        <div class="project-tech">
-          <span class="tech-badge">Next.js 16</span>
-          <span class="tech-badge">Claude API</span>
-          <span class="tech-badge">Claude Vision</span>
-          <span class="tech-badge">Vercel</span>
+    <!-- 2. INSURANCE TRAINING PLATFORM -->
+    <div class="project-accordion">
+      <div class="project-header" onclick="toggleProject(this)">
+        <div class="project-type">Enterprise</div>
+        <div class="project-header-main">
+          <div class="project-title">Interactive Insurance Training Platform</div>
+          <div class="project-oneliner">Built for an insurance agency. Adaptive quizzes, branching scenarios with real business context, AI tutor, skill progression tracking.</div>
         </div>
-        <div class="project-links">
-          <a href="https://strangerthings-tutor.vercel.app" class="project-link" target="_blank">Try it &#8599;</a>
+        <div class="project-toggle"><span class="project-toggle-icon">+</span></div>
+      </div>
+      <div class="project-body">
+        <div class="project-body-inner">
+          <div>
+            <div class="project-problem-label">The problem</div>
+            <div class="project-problem">Traditional insurance training is passive. Agents read manuals and take multiple-choice tests. Nothing sticks.</div>
+            <p class="project-desc">Interactive daily learning modules, adaptive quizzes drawn from real industry knowledge domains, branching scenarios with actual business context, an AI tutor that adapts to each learner, and skill progression tracking across the team.</p>
+          </div>
+          <div class="project-meta">
+            <div class="project-tech">
+              <span class="tech-badge">React</span>
+              <span class="tech-badge">Tailwind</span>
+              <span class="tech-badge">shadcn/ui</span>
+              <span class="tech-badge">Vercel</span>
+            </div>
+            <div class="project-links-row">
+              <span class="project-status">Prototype deployed (confidential)</span>
+            </div>
+          </div>
         </div>
       </div>
     </div>
-
     <!-- 3. AI ADOPTION DIAGNOSTIC -->
-    <div class="project-card">
-      <div class="project-tag">Diagnostic Tool &middot; Strange Circles</div>
-      <h3>AI Adoption Diagnostic</h3>
-      <div class="project-problem">AI readiness assessments are usually vendor scorecards. They measure budget and tools, not whether an organization can actually adopt and sustain AI.</div>
-      <p class="project-desc">A 10-minute diagnostic that maps leaders to one of four archetypes&nbsp;&mdash; Optimizer, Transformer, Tinkerer, Dreamer&nbsp;&mdash; across motivation and execution axes. Outputs a personalized prescription and invitation to the right peer cohort. 40+ iterations to get the question design right.</p>
-      <div class="project-footer">
-        <div class="project-tech">
-          <span class="tech-badge">Claude API</span>
-          <span class="tech-badge">Vercel</span>
+    <div class="project-accordion">
+      <div class="project-header" onclick="toggleProject(this)">
+        <div class="project-type">Diagnostic</div>
+        <div class="project-header-main">
+          <div class="project-title">AI Adoption Diagnostic</div>
+          <div class="project-oneliner">10-minute assessment mapping leaders to four archetypes: Optimizer, Transformer, Tinkerer, Dreamer. 40+ iterations on question design.</div>
         </div>
-        <a href="https://ai-diagnostic-amber.vercel.app/" class="project-link" target="_blank">Try it &#8599;</a>
+        <div class="project-toggle"><span class="project-toggle-icon">+</span></div>
+      </div>
+      <div class="project-body">
+        <div class="project-body-inner">
+          <div>
+            <div class="project-problem-label">The problem</div>
+            <div class="project-problem">AI readiness assessments are usually vendor scorecards. They measure budget and tools, not whether an organization can actually adopt and sustain AI.</div>
+            <p class="project-desc">Maps leaders across motivation and execution axes. Outputs a personalized prescription and invitation to the right peer cohort. The question design went through 40+ iterations. The hardest part of any diagnostic is asking questions that reveal honest answers.</p>
+          </div>
+          <div class="project-meta">
+            <div class="project-tech">
+              <span class="tech-badge">Claude API</span>
+              <span class="tech-badge">Vercel</span>
+            </div>
+            <div class="project-links-row">
+              <a href="https://ai-diagnostic-amber.vercel.app/" class="project-link" target="_blank">Try it &#8599;</a>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
-
-    <!-- 3. CGO — with evolution backstory -->
-    <div class="project-card">
-      <div class="project-tag">AI Agent &middot; Business Development</div>
-      <h3>Conversational Growth Partner (CGO)</h3>
-      <div class="project-problem">CRMs capture what happened. They don't help you think about what to do next or catch the relationship going cold.</div>
-      <p class="project-desc">A Claude-powered chief growth officer sitting across Gmail, calendar, and pipeline data. Surfaces who to contact, drafts outreach in my voice, tracks commitments, flags quiet deals. Built on a skills architecture that understands specific business context. In active daily use.</p>
-      <div class="project-backstory">
-        <strong>The backstory</strong>
-        Started as a 650-line PRD and HTML prototype. Rebuilt as Nebula&nbsp;&mdash; a four-plugin operating system that tried to do everything. Over-engineered. Killed it, stripped it back to a conversational skills architecture. The lesson every builder learns: the first build teaches you what you actually need.
-      </div>
-      <div class="project-footer">
-        <div class="project-tech">
-          <span class="tech-badge">Claude Code</span>
-          <span class="tech-badge">MCP</span>
-          <span class="tech-badge">Gmail API</span>
-        </div>
-        <a href="https://github.com/dbdb168" class="project-link" target="_blank">GitHub &#8599;</a>
-      </div>
-    </div>
-
     <!-- 4. FAMILYOPS -->
-    <div class="project-card">
-      <div class="project-tag">Personal Automation &middot; Family</div>
-      <h3>FamilyOps &mdash; Always-On Family Chief of Staff</h3>
-      <div class="project-problem">Single dad, two boys, co-parenting logistics. School emails, calendar conflicts, weekly family plans&nbsp;&mdash; it all needs coordinating and nobody's doing it.</div>
-      <p class="project-desc">Processes school emails, updates Google Calendar automatically, generates printable weekly family plans for the fridge. Runs autonomously with duplicate protection and two-input handling for simple vs. complex schedules.</p>
-      <div class="project-backstory">
-        <strong>The backstory</strong>
-        Version 1 was a Python script run from the terminal. Worked well for months. Then I moved it to OpenClaw to make it always-on&nbsp;&mdash; no terminal, no manual trigger. Now it's a family chief of staff that runs in the background. The problem was personal. The solution taught me about building autonomous agents.
-      </div>
-      <div class="project-footer">
-        <div class="project-tech">
-          <span class="tech-badge">Python</span>
-          <span class="tech-badge">Google Calendar API</span>
-          <span class="tech-badge">Gemini</span>
-          <span class="tech-badge">OpenClaw</span>
+    <div class="project-accordion">
+      <div class="project-header" onclick="toggleProject(this)">
+        <div class="project-type">Automation</div>
+        <div class="project-header-main">
+          <div class="project-title">FamilyOps: Always-On Family Chief of Staff</div>
+          <div class="project-oneliner">Processes school emails, updates calendars, generates weekly family plans. Runs autonomously. Version 7.4.</div>
         </div>
-        <span class="project-status">Local tool &middot; v7.4</span>
+        <div class="project-toggle"><span class="project-toggle-icon">+</span></div>
       </div>
-    </div>
-
-    <!-- 5. BUILDFIRST.IO — V1 → V2 -->
-    <div class="project-card">
-      <div class="project-tag">Workshop Platform &middot; BuildFirst</div>
-      <h3>BuildFirst.io &mdash; From Landing Page to Product</h3>
-      <div class="project-problem">Executive AI training doesn't change behavior because it stays abstract. Leaders leave with enthusiasm and no momentum. Nothing ships.</div>
-      <p class="project-desc">V2 is a three-page site with a 10-question self-assessment built on Anthropic's 4D AI Fluency Framework, an 8-step build intake form with progressive disclosure, and Make.com automation that delivers personalised results via email. The scoring engine and complete HTML email are generated client-side&nbsp;&mdash; Make.com is a dumb pipe. GA tracking, partial saves, drop-off capture.</p>
-      <div class="project-backstory">
-        <strong>The backstory</strong>
-        V1 was a single landing page and a calendar link. It worked&nbsp;&mdash; people booked calls. But it didn't demonstrate the methodology it was selling. V2 is the site practicing what it preaches: understand the problem (assessment), scope it down (intake form), then build. The site itself is now the first touchpoint of the BuildFirst experience.
-      </div>
-      <div class="project-footer">
-        <div class="project-tech">
-          <span class="tech-badge">HTML/CSS/JS</span>
-          <span class="tech-badge">Make.com</span>
-          <span class="tech-badge">SendGrid</span>
-          <span class="tech-badge">Vercel</span>
-          <span class="tech-badge">Claude Code</span>
-        </div>
-        <div class="project-links">
-          <a href="https://www.buildfirst.io" class="project-link" target="_blank">BuildFirst.io &#8599;</a>
-          <a href="https://www.buildfirst.io/assessment.html" class="project-link" target="_blank">Take the Assessment &#8599;</a>
+      <div class="project-body">
+        <div class="project-body-inner">
+          <div>
+            <div class="project-problem-label">The problem</div>
+            <div class="project-problem">Single dad, two boys, co-parenting logistics. School emails, calendar conflicts, weekly family plans. It all needs coordinating and nobody's doing it.</div>
+            <p class="project-desc">Processes school emails, updates Google Calendar automatically, generates printable weekly family plans for the fridge. Duplicate protection, two-input handling for simple vs. complex schedules.</p>
+            <div class="project-backstory">
+              <strong>The backstory</strong>
+              Version 1 was a Python script run from the terminal. Worked well for months. Then I moved it to OpenClaw to make it always-on. The problem was personal. The solution taught me about building autonomous agents.
+            </div>
+          </div>
+          <div class="project-meta">
+            <div class="project-tech">
+              <span class="tech-badge">Python</span>
+              <span class="tech-badge">Google Calendar API</span>
+              <span class="tech-badge">Gemini</span>
+              <span class="tech-badge">OpenClaw</span>
+            </div>
+            <div class="project-links-row">
+              <span class="project-status">Local tool &middot; v7.4</span>
+            </div>
+          </div>
         </div>
       </div>
     </div>
-
-    <!-- 6. DIGITAL CLONE -->
-    <div class="project-card">
-      <div class="project-tag">AI Product &middot; Luminary</div>
-      <h3>Digital Clone &mdash; Scaling a Thought Leader</h3>
-      <div class="project-problem">A highly sought-after business advisor can only be in one room at a time. Their ideas could reach thousands, but their time doesn't scale.</div>
-      <p class="project-desc">A premium platform creating a digital clone of one of the world's leading business advisors. Text chat, voice calls, WhatsApp&nbsp;&mdash; powered by RAG over their books, talks, and frameworks. Two-persona design: an assistant for practical logistics, the advisor for substance. 548-line PRD complete, build phase starting.</p>
-      <div class="project-footer">
-        <div class="project-tech">
-          <span class="tech-badge">Next.js 14</span>
-          <span class="tech-badge">Claude API</span>
-          <span class="tech-badge">ElevenLabs</span>
-          <span class="tech-badge">Pinecone</span>
+    <!-- 5. SECOND BRAIN -->
+    <div class="project-accordion">
+      <div class="project-header" onclick="toggleProject(this)">
+        <div class="project-type">Personal</div>
+        <div class="project-header-main">
+          <div class="project-title">Second Brain (And Why I Stopped Using It)</div>
+          <div class="project-oneliner">Full productivity dashboard: daily logs, weekly planning, prospect tracking, traction metrics. Used it hard for weeks. Then stopped. That was the lesson.</div>
         </div>
-        <span class="project-status">In development</span>
+        <div class="project-toggle"><span class="project-toggle-icon">+</span></div>
       </div>
-    </div>
-
-    <!-- 7. LEARNING PLATFORM (CONFIDENTIAL) -->
-    <div class="project-card">
-      <div class="project-tag">Learning Platform &middot; Insurance</div>
-      <h3>Interactive Insurance Training Platform</h3>
-      <div class="project-problem">Traditional insurance training is passive. Agents read manuals and take multiple-choice tests. Nothing sticks.</div>
-      <p class="project-desc">Built for an insurance agency. Interactive daily learning modules, adaptive quizzes from industry knowledge domains, branching scenarios with real business context, AI tutor, and skill progression tracking.</p>
-      <div class="project-footer">
-        <div class="project-tech">
-          <span class="tech-badge">React</span>
-          <span class="tech-badge">Tailwind</span>
-          <span class="tech-badge">shadcn/ui</span>
-          <span class="tech-badge">Vercel</span>
+      <div class="project-body">
+        <div class="project-body-inner">
+          <div>
+            <div class="project-problem-label">The problem</div>
+            <div class="project-problem">Running seven experiments, a job search, a content pipeline, and a family. I needed a system to hold it all together.</div>
+            <p class="project-desc">Daily logs, weekly planning, job search pipeline, prospect tracking, article drafts, traction metrics across all seven ventures. Uses the File System Access API. Runs entirely local, no server, no subscriptions, just markdown files and a browser. Used it hard for weeks. Then gradually stopped. Sometimes the act of building the system gives you the clarity, and then you don't need the system anymore.</p>
+          </div>
+          <div class="project-meta">
+            <div class="project-tech">
+              <span class="tech-badge">HTML</span>
+              <span class="tech-badge">File System Access API</span>
+              <span class="tech-badge">Markdown</span>
+            </div>
+            <div class="project-links-row">
+              <span class="project-status">Built &middot; Used &middot; Learned from</span>
+            </div>
+          </div>
         </div>
-        <span class="project-status">Prototype deployed (confidential)</span>
       </div>
     </div>
-
-    <!-- 8. BUILDFIRST WORKSHOP SKILLS -->
-    <div class="project-card">
-      <div class="project-tag">Workshop Framework &middot; Education</div>
-      <h3>BuildFirst &mdash; 7-Skill Workshop System</h3>
-      <div class="project-problem">Workshop participants need scaffolding, not slide decks. They need to build confidence by building something real&nbsp;&mdash; with the right guardrails at the right moments.</div>
-      <p class="project-desc">A structured 7-skill arc for absolute beginners: Quick Win &rarr; Dream Capture &rarr; PRD Builder &rarr; Build &rarr; Refine &rarr; Retrospective &rarr; Next Project. Designed as training wheels that can be discarded once confidence is built. Includes templates, coaching prompts, and a personal tech vocabulary builder. Tested with real participants.</p>
-      <div class="project-footer">
-        <div class="project-tech">
-          <span class="tech-badge">Claude Skills</span>
-          <span class="tech-badge">Coaching</span>
-        </div>
-        <span class="project-status">Active in workshops</span>
-      </div>
-    </div>
-
-    <!-- 9. SECOND BRAIN — wide -->
-    <div class="project-card wide">
-      <div class="project-tag">Productivity System &middot; Personal</div>
-      <h3>Second Brain &mdash; And Why I Stopped Using It</h3>
-      <div class="project-problem">Running seven experiments, a job search, a content pipeline, and a family. I needed a system to hold it all together.</div>
-      <p class="project-desc">A full productivity dashboard: daily logs, weekly planning, job search pipeline, prospect tracking, article drafts, traction metrics across all seven ventures. Uses the File System Access API&nbsp;&mdash; runs entirely local, no server, no subscriptions, just markdown files and a browser. Used it hard for weeks. Then gradually stopped. Sometimes the act of building the system gives you the clarity, and then you don't need the system anymore. The understanding transfers to you. That's a useful thing to learn about tools.</p>
-      <div class="project-footer">
-        <div class="project-tech">
-          <span class="tech-badge">HTML</span>
-          <span class="tech-badge">File System Access API</span>
-          <span class="tech-badge">Markdown</span>
-        </div>
-        <span class="project-status">Built &middot; Used &middot; Learned from</span>
-      </div>
-    </div>
-
-    <!-- 10. RECIPE ADAPTER -->
-    <div class="project-card">
-      <div class="project-tag">The AI Cookbook &middot; Tool</div>
-      <h3>Recipe Adapter &mdash; Dietary Recipe Conversion</h3>
-      <div class="project-problem">Every recipe online assumes a standard diet. If you need gout-friendly, heart-healthy, or high-protein versions, you're on your own.</div>
-      <p class="project-desc">Paste any recipe, select dietary needs, get an adapted version with clear explanations of what changed and why. Designed to be buildable in a single afternoon. Full PRD and wireframe complete. Uses Gemini API free tier&nbsp;&mdash; no credit card, no backend, no excuses.</p>
-      <div class="project-footer">
-        <div class="project-tech">
-          <span class="tech-badge">Vanilla JS</span>
-          <span class="tech-badge">Gemini API</span>
-        </div>
-        <span class="project-status">PRD complete</span>
-      </div>
-    </div>
-
-    <!-- CONVERSATION CARD -->
-    <div class="project-card conversation">
-      <div class="project-tag">The most useful thing on this page</div>
-      <h3>I'd rather show you what I'd build for you.</h3>
-      <div class="project-problem">A portfolio shows what I've built for other problems. The more interesting question is what I'd build for yours.</div>
-      <p class="project-desc">Tell me a real problem your team is losing time to right now. I'll come back with how I'd approach it, what I'd ask before touching any code, and a rough sketch of what the solution might look like. That conversation is more useful than any demo I could show you.</p>
-      <div class="project-footer">
-        <div class="project-tech"></div>
-        <a href="mailto:davidbeath8@gmail.com" class="project-link">Start the conversation &rarr;</a>
-      </div>
-    </div>
-
   </div>
 </section>
-
-<!-- SECTION 02: WRITING -->
+<!-- SECTION 03: WRITING -->
 <section id="writing" class="deepdives">
   <div class="section-header">
-    <span class="section-label">02 / Writing</span>
+    <span class="section-label">03 / Writing</span>
     <div class="section-rule"></div>
   </div>
-
   <div class="articles-list">
     <a href="quiet-advantage.html" class="article-item">
       <div class="article-venue">Featured Article</div>
       <h3>The Quiet Advantage</h3>
-      <p class="article-desc">Why small and mid-sized businesses have the edge in AI&nbsp;&mdash; for now. Enterprise pilots fail 95% of the time. The organizations with fewer resources have fewer barriers. This window won't stay open forever.</p>
+      <p class="article-desc">Why small and mid-sized businesses have the edge in AI, for now. Enterprise pilots fail 95% of the time. The organizations with fewer resources have fewer barriers.</p>
       <span class="article-link">Read the article</span>
     </a>
     <a href="https://theaicookbook.substack.com" class="article-item" target="_blank">
@@ -766,100 +921,91 @@
     </a>
   </div>
 </section>
-
-<!-- BUILDFIRST BAND -->
-<section id="buildfirst" class="buildfirst-section">
-  <div class="section-header">
-    <span class="section-label">BuildFirst</span>
-    <div class="section-rule"></div>
-  </div>
-  <div class="buildfirst-grid">
-    <div>
-      <h2>Build first.<br>Theory later.</h2>
-      <p class="buildfirst-desc">BuildFirst is my hands-on AI practice for business leaders. Workshops, 1:1 coaching, and builds&nbsp;&mdash; all grounded in Anthropic's 4D AI Fluency Framework. We develop four skills that matter more than prompting: Delegation, Description, Discernment, and Diligence.</p>
-      <p class="buildfirst-desc">Start with a 2-minute self-assessment to see where you stand. Then we figure out what to do about it.</p>
-      <div style="display:flex;gap:1rem;flex-wrap:wrap;margin-top:0.5rem;">
-        <a href="https://www.buildfirst.io/assessment.html" class="btn-primary" style="background: var(--ink);" target="_blank">Take the Assessment &rarr;</a>
-        <a href="https://www.buildfirst.io" class="btn-secondary" style="border-color:var(--ink);color:var(--ink);" target="_blank">BuildFirst.io</a>
-      </div>
-    </div>
-    <div>
-      <blockquote class="buildfirst-quote">
-        &ldquo;The technology is new. How to build isn't. Design thinking, experimentation, starting with real problems&nbsp;&mdash; these fundamentals still apply. AI just makes them faster.&rdquo;
-      </blockquote>
-    </div>
-  </div>
-</section>
-
-<!-- SECTION 03: BACKGROUND -->
+<!-- SECTION 04: BACKGROUND -->
 <section id="arc">
   <div class="section-header">
-    <span class="section-label">03 / Background</span>
+    <span class="section-label">04 / Background</span>
     <div class="section-rule"></div>
   </div>
-  <p class="arc-intro">Twenty years inside complex organizations&nbsp;&mdash; consulting, enterprise, startup, and now independent. The consistent thread: understanding how things actually work before proposing how to change them.</p>
-
+  <p class="arc-intro">Twenty years inside complex organizations: consulting, enterprise, startup, and now independent. The consistent thread: understanding how things actually work before proposing how to change them.</p>
   <div class="timeline">
     <div class="timeline-item">
       <div class="timeline-meta">2019 &ndash; Present &middot; Richmond, VA</div>
-      <div class="timeline-title">BuildFirst, Luminary &amp; DB8 LLC</div>
-      <p class="timeline-desc">Building with AI daily. Executive workshops, talent agency for creative leaders, and strategic consulting.</p>
+      <div class="timeline-title">DB8 LLC &amp; Luminary, Co-founder</div>
+      <p class="timeline-desc">Building with AI daily. Four active ventures: BuildFirst (executive workshops &amp; coaching), Strange People (AI leader peer community), The AI Cookbook (newsletter), Luminary (partnership with Tim Brown, former CEO of IDEO).</p>
     </div>
     <div class="timeline-item">
       <div class="timeline-meta">2023 &ndash; 2024 &middot; Remote</div>
-      <div class="timeline-title">NEOL &mdash; Head of Business Development</div>
+      <div class="timeline-title">NEOL, Head of Business Development</div>
       <p class="timeline-desc">$1.2M new revenue in 8 months. Built go-to-market engine from scratch.</p>
     </div>
     <div class="timeline-item">
       <div class="timeline-meta">2020 &ndash; 2023 &middot; Richmond, VA</div>
-      <div class="timeline-title">3Pillar Global &mdash; Director, Solutions</div>
-      <p class="timeline-desc">$30M in bookings. Built $4M strategic design practice from scratch in year one.</p>
+      <div class="timeline-title">3Pillar Global, Director, Solutions</div>
+      <p class="timeline-desc">$30M in new revenue enabled by a prototype-first approach to enterprise solutions. Built $4M strategic design practice from scratch in year one.</p>
     </div>
     <div class="timeline-item">
       <div class="timeline-meta">2017 &ndash; 2019 &middot; Richmond, VA</div>
-      <div class="timeline-title">Capital One &mdash; Director, Product Management</div>
+      <div class="timeline-title">Capital One, Director, Product Management</div>
       <p class="timeline-desc">Commercial Bank transformation. 4,000 workflows &rarr; 200. Salesforce implementation.</p>
     </div>
     <div class="timeline-item">
       <div class="timeline-meta">2016 &ndash; 2017</div>
-      <div class="timeline-title">Smartup &mdash; Head of Americas</div>
+      <div class="timeline-title">Smartup, Head of Americas</div>
       <p class="timeline-desc">US market entry for enterprise SaaS. $1M+ ARR first year.</p>
     </div>
     <div class="timeline-item">
       <div class="timeline-meta">2015 &ndash; 2016 &middot; Singapore</div>
-      <div class="timeline-title">DBS Bank &mdash; SVP, Innovation Management</div>
+      <div class="timeline-title">DBS Bank, SVP, Innovation Management</div>
       <p class="timeline-desc">DigiBank launch. Built innovation practice from scratch.</p>
     </div>
     <div class="timeline-item">
       <div class="timeline-meta">2009 &ndash; 2015 &middot; London &middot; Singapore &middot; Dubai</div>
-      <div class="timeline-title">IDEO &mdash; Portfolio Director</div>
+      <div class="timeline-title">IDEO, Portfolio Director</div>
       <p class="timeline-desc">$10M UAE joint venture. Singapore $2M &rarr; $8M. British Airways, IHG, Commonwealth Bank.</p>
     </div>
   </div>
   <div class="timeline-early">
-    <strong>Teaching:</strong> VCU Adjunct Faculty, AI x Product Innovation (Fall 2026)<br>
     <strong>Early career:</strong> lastminute.com founding team (Europe's first unicorn) &middot; Jumeirah Hotels<br>
     <strong>Education:</strong> Les Roches Hotel Management School &middot; Swiss Hotel Association Diploma
   </div>
 </section>
-
 <!-- CONTACT -->
 <section id="contact" class="contact">
-  <h2>Let's <em>talk.</em></h2>
-  <p class="contact-sub"></p>
+  <h2>What problem are you <em>solving?</em></h2>
+  <p class="contact-sub">I'm interested in the problems you're experiencing. Tell me about a specific one you or someone on your team would like to solve. That's where it starts.</p>
   <div class="contact-links">
-    <a href="mailto:davidbeath8@gmail.com" class="contact-link">Email directly</a>
+    <a href="mailto:david@thisisluminary.co" class="contact-link">Email directly</a>
     <a href="https://www.linkedin.com/in/dbeath/" class="contact-link" target="_blank">LinkedIn</a>
     <a href="https://theaicookbook.substack.com" class="contact-link" target="_blank">The AI Cookbook</a>
     <a href="https://www.buildfirst.io" class="contact-link" target="_blank">BuildFirst.io</a>
     <a href="https://github.com/dbdb168" class="contact-link" target="_blank">GitHub</a>
   </div>
 </section>
-
 <footer>
   <span class="footer-brand">David Beath &middot; DB8 LLC &middot; Richmond, VA</span>
-  <span class="footer-note">AI Practitioner. Builder.</span>
+  <span class="footer-note">Built with coffee, Claude, and a bias toward shipping.</span>
 </footer>
-
+<script>
+function toggleProject(headerEl) {
+  const accordion = headerEl.parentElement;
+  const body = accordion.querySelector('.project-body');
+  const isOpen = accordion.classList.contains('is-open');
+  // Close all others
+  document.querySelectorAll('.project-accordion.is-open').forEach(item => {
+    if (item !== accordion) {
+      item.classList.remove('is-open');
+      item.querySelector('.project-body').style.maxHeight = null;
+    }
+  });
+  if (isOpen) {
+    accordion.classList.remove('is-open');
+    body.style.maxHeight = null;
+  } else {
+    accordion.classList.add('is-open');
+    body.style.maxHeight = body.scrollHeight + 'px';
+  }
+}
+</script>
 </body>
 </html>
