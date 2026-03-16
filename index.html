@@ -136,8 +136,10 @@
   .conversation-band {
     background: var(--amber); color: var(--ink);
     padding: 5rem 4rem;
-    display: grid; grid-template-columns: 1fr;
-    max-width: 720px;
+    display: flex; justify-content: center;
+  }
+  .conversation-band > div {
+    max-width: 680px; text-align: center;
   }
   .conversation-band h2 {
     font-family: 'Instrument Serif', serif;
@@ -147,7 +149,7 @@
   }
   .conversation-band p {
     font-size: 1.05rem; line-height: 1.8;
-    color: rgba(15,14,12,0.8); margin-bottom: 1.5rem; max-width: 520px;
+    color: rgba(15,14,12,0.8); margin-bottom: 1.5rem;
   }
   .conversation-band .btn-primary { background: var(--ink); }
   .conversation-band .btn-primary:hover { background: #2a2520; }
