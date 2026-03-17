@@ -47,7 +47,7 @@
     position: fixed; top: 0; width: 100%;
     padding: 1.2rem 4rem;
     display: flex; justify-content: space-between; align-items: center;
-    z-index: 1050;
+    z-index: 1102;
     background: rgba(245, 240, 232, 0.92);
     backdrop-filter: blur(8px);
     border-bottom: 1px solid var(--rule);
@@ -58,7 +58,13 @@
     letter-spacing: 0.12em; text-transform: uppercase;
     color: var(--amber); text-decoration: none;
   }
-  .nav-links { display: flex; gap: 2.5rem; list-style: none; }
+  .nav-links {
+    position: fixed; top: 0; right: 0;
+    height: auto; padding: 1.2rem 4rem;
+    display: flex; align-items: center; gap: 2.5rem; list-style: none;
+    z-index: 1050;
+    pointer-events: auto;
+  }
   .nav-links a {
     font-family: 'DM Mono', monospace;
     font-size: 0.75rem; letter-spacing: 0.08em;
@@ -66,6 +72,15 @@
     text-decoration: none; transition: color 0.2s;
   }
   .nav-links a:hover { color: var(--ink); }
+  .mobile-menu-backdrop {
+    display: none; position: fixed; inset: 0;
+    background: rgba(15, 14, 12, 0.4);
+    z-index: 1090; opacity: 0;
+    transition: opacity 0.3s ease;
+  }
+  .mobile-menu-backdrop.is-open {
+    display: block; opacity: 1;
+  }
   /* Hamburger button — hidden on desktop */
   .nav-hamburger {
     display: none; background: none; border: none; cursor: pointer;
@@ -541,11 +556,11 @@
     .nav-hamburger { display: block; }
     .nav-links {
       position: fixed; top: 0; right: 0; bottom: 0; left: auto;
-      width: 260px; z-index: 1100;
+      width: 260px; height: 100%; z-index: 1101;
       background: var(--paper);
       box-shadow: -4px 0 20px rgba(0, 0, 0, 0.15);
       flex-direction: column; justify-content: center; align-items: flex-end;
-      padding-right: 2rem;
+      padding: 0 2rem 0 0;
       gap: 2.5rem;
       transform: translateX(100%);
       pointer-events: none;
@@ -553,6 +568,8 @@
     }
     .nav-links.is-open { transform: translateX(0); pointer-events: auto; }
     .nav-links a { font-size: 1rem; letter-spacing: 0.12em; color: var(--ink); }
+    .mobile-menu-backdrop { display: block; opacity: 0; pointer-events: none; }
+    .mobile-menu-backdrop.is-open { opacity: 1; pointer-events: auto; }
     nav { padding: 1rem 1.25rem; }
     section { padding: 4rem 1.25rem; }
     .hero { padding: 7rem 1.25rem 3rem; }
@@ -576,14 +593,15 @@
   <button class="nav-hamburger" aria-label="Menu" aria-expanded="false">
     <span></span><span></span><span></span>
   </button>
-  <ul class="nav-links">
-    <li><a href="#os">Operating System</a></li>
-    <li><a href="#built">Projects</a></li>
-    <li><a href="#writing">Writing</a></li>
-    <li><a href="#arc">Background</a></li>
-    <li><a href="#contact">Contact</a></li>
-  </ul>
 </nav>
+<div class="mobile-menu-backdrop"></div>
+<ul class="nav-links">
+  <li><a href="#os">Operating System</a></li>
+  <li><a href="#built">Projects</a></li>
+  <li><a href="#writing">Writing</a></li>
+  <li><a href="#arc">Background</a></li>
+  <li><a href="#contact">Contact</a></li>
+</ul>
 <!-- HERO -->
 <section class="hero">
   <div class="hero-left">
@@ -1044,17 +1062,22 @@ function toggleProject(headerEl) {
 (function() {
   const btn = document.querySelector('.nav-hamburger');
   const menu = document.querySelector('.nav-links');
+  const backdrop = document.querySelector('.mobile-menu-backdrop');
+  function closeMenu() {
+    menu.classList.remove('is-open');
+    btn.classList.remove('is-open');
+    backdrop.classList.remove('is-open');
+    btn.setAttribute('aria-expanded', 'false');
+  }
   btn.addEventListener('click', function() {
     const open = menu.classList.toggle('is-open');
     btn.classList.toggle('is-open', open);
+    backdrop.classList.toggle('is-open', open);
     btn.setAttribute('aria-expanded', open);
   });
+  backdrop.addEventListener('click', closeMenu);
   menu.querySelectorAll('a').forEach(function(link) {
-    link.addEventListener('click', function() {
-      menu.classList.remove('is-open');
-      btn.classList.remove('is-open');
-      btn.setAttribute('aria-expanded', 'false');
-    });
+    link.addEventListener('click', closeMenu);
   });
 })();
 </script>
